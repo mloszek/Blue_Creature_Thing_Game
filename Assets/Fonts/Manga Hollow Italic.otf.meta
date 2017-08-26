@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b1c6bc05bc5a95c488ea59193b6b775a
+timeCreated: 1502455898
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Manga Hollow
+  fontNames:
+  - Manga Hollow
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

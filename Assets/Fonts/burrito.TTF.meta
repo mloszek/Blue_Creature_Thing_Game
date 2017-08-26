@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 461ee4ef966ba6e44ba04583d0d9c74d
+timeCreated: 1502456103
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Burrito
+  fontNames:
+  - Burrito
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

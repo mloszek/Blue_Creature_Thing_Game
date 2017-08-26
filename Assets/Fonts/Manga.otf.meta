@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 262297111139c7f419c2dae20f451dfb
+timeCreated: 1502455898
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Manga
+  fontNames:
+  - Manga
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0609855125882044fa53d214c08b4359, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
