@@ -52,10 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CloudMover.cs" />
+     <Compile Include="Assets\Scripts\englishLanguage.cs" />
      <Compile Include="Assets\Scripts\Fader.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LinksController.cs" />
      <Compile Include="Assets\Scripts\MainMenuButtonsScript.cs" />
+     <Compile Include="Assets\Scripts\polishLanguage.cs" />
      <Compile Include="Assets\Scripts\Shaker.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
