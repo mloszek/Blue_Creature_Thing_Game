@@ -25,8 +25,8 @@ public class LinksController : MonoBehaviour
 		if (isShown) {
 			button.interactable = false;
 			button.transform.position = Vector3.MoveTowards (button.transform.position, positionWhenCredits, Time.deltaTime * 500);
-			text.text = "responsible one:\nMilosz Loszek\n" +
-			"miloszloszek@gmail.com\ngithub.com/mloszek\nlinkedin.com/in/\nmiłosz-loszek-353908141";
+			text.text = "by Lochu\n" +
+			"miloszloszek@gmail.com\ngithub.com/mloszek";
 		} else {
 			if (button.transform.position != zeroPosition) {
 				button.interactable = true;

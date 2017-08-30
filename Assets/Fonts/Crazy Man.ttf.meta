@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 461ee4ef966ba6e44ba04583d0d9c74d
-timeCreated: 1504089171
+guid: ada7f721a7efc994eafa7eb351117f15
+timeCreated: 1504092724
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Burrito
+  fontName: Crazy man
   fontNames:
-  - Burrito
+  - Crazy man
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
