@@ -784,8 +784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd1e9027a7618242aaa6559c1a255e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 0}
-  button2: {fileID: 0}
+  button1: {fileID: 845811197}
+  button2: {fileID: 471326888}
+  button3: {fileID: 1420046079}
 --- !u!225 &586974484
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1421,8 +1422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 586974489}
-        m_MethodName: begin
+      - m_Target: {fileID: 586974483}
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -5,9 +5,9 @@
       <File FileName="Assets\Scripts\LanguageController.cs" Line="25" Column="5" />
       <File FileName="Assets\Scripts\GameController.cs" Line="14" Column="3" />
       <File FileName="Assets\Scripts\LinksController.cs" Line="29" Column="47" />
-      <File FileName="Assets\Scripts\Fader.cs" Line="57" Column="2" />
+      <File FileName="Assets\Scripts\Fader.cs" Line="34" Column="4" />
       <File FileName="Assets\Scripts\Shaker.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\polishLanguage.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\polishLanguage.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MainMenuButtonsScript.cs" Line="8" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
