@@ -12,10 +12,13 @@ public class Fader : MonoBehaviour
 	public Button button3;
 	private CanvasGroup canvasGroup;
 	private float elapsedTime = 0;
-	private float fadeTime = 1.0f;
+	private float fadeInTime = 0.5f;
+	private float fadeOutTime = 1.0f;
+	private string sceneName; 
 
 	private void Awake ()
 	{
+		sceneName = SceneManager.GetActiveScene().name;
 		canvasGroup = GetComponent<CanvasGroup> ();
 		canvasGroup.alpha = 0;
 	}
@@ -41,7 +44,7 @@ public class Fader : MonoBehaviour
 
 		while (canvasGroup.alpha < 1.0f) {
 			elapsedTime += Time.deltaTime;
-			canvasGroup.alpha = Mathf.Clamp01 (0 + (elapsedTime / fadeTime));
+			canvasGroup.alpha = Mathf.Clamp01 (0 + (elapsedTime / fadeInTime));
 			yield return null;
 		}
 		yield return null;
@@ -53,9 +56,12 @@ public class Fader : MonoBehaviour
 
 		while (canvasGroup.alpha > 0) {
 			elapsedTime += Time.deltaTime;
-			canvasGroup.alpha = Mathf.Clamp01 (1 - (elapsedTime / fadeTime));
+			canvasGroup.alpha = Mathf.Clamp01 (1 - (elapsedTime / fadeOutTime));
 			yield return null;
 		}
-		SceneManager.LoadScene ("selection");
+
+		if (sceneName == "chmurki") {
+			SceneManager.LoadScene ("selection");
+		}
 	}
 }

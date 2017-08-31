@@ -889,6 +889,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionBoard: {fileID: 925833033}
+  creature: {fileID: 1275071833994288, guid: 6cdf5b20d4997ee4ca689262880c7b03, type: 2}
+  fader: {fileID: 586974483}
 --- !u!1 &618298027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,8 +1424,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 586974483}
-        m_MethodName: FadeOut
+      - m_Target: {fileID: 586974489}
+        m_MethodName: begin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
