@@ -46,3 +46,12 @@ TagManager:
   - name: bkg
     uniqueID: 4102556741
     locked: 0
+  - name: cloud1
+    uniqueID: 1825223477
+    locked: 0
+  - name: cloud2
+    uniqueID: 16390999
+    locked: 0
+  - name: fastCloud
+    uniqueID: 3703129605
+    locked: 0
