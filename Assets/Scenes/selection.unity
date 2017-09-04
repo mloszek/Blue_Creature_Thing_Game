@@ -2645,6 +2645,7 @@ MonoBehaviour:
   onDay: {fileID: 2800000, guid: 32fe964eec8a68e43a5b2552a79aae94, type: 3}
   onEvening: {fileID: 2800000, guid: bffee476523a485459b8f0887b074b97, type: 3}
   onNight: {fileID: 2800000, guid: d2801fba390c6ca409a360ce88d34e40, type: 3}
+  renderer: {fileID: 1919248445}
 --- !u!1 &1951086400
 GameObject:
   m_ObjectHideFlags: 0
