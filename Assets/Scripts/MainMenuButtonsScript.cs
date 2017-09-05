@@ -13,13 +13,17 @@ public class MainMenuButtonsScript : MonoBehaviour
 	public GameObject canvas;
 	public GameObject ingameCanvas;
 	public GameObject toggleButton;
+	public IngameMenuScript ingameMenuScript;
 
 	public void begin ()
 	{
 		canvas.SetActive (false);
 		ingameCanvas.SetActive (true);
+		if (GameObject.FindWithTag ("Creature") == null) 
+		{
 			Instantiate (creature);
-//		creature.SetActive (true);
+		}
+		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 0);
 		toggleButton.SetActive (true);
 	}
 

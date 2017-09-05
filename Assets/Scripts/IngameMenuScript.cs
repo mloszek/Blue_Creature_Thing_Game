@@ -27,8 +27,7 @@ public class IngameMenuScript : MonoBehaviour
 
 	public void getBackToMainMenu ()
 	{
-
-		creature.SetActive (false);
+		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 2);
 		buttons.SetActive (false);
 		wholeCanvas.SetActive (false);
 		mainMenuCanvas.SetActive (true);

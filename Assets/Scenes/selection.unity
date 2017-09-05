@@ -986,7 +986,6 @@ GameObject:
   - component: {fileID: 586974484}
   - component: {fileID: 586974486}
   - component: {fileID: 586974485}
-  - component: {fileID: 586974483}
   - component: {fileID: 586974489}
   m_Layer: 5
   m_Name: MainMenuCanvas
@@ -995,20 +994,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &586974483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 586974482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd1e9027a7618242aaa6559c1a255e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button1: {fileID: 845811197}
-  button2: {fileID: 471326888}
-  button3: {fileID: 1420046079}
 --- !u!225 &586974484
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1112,10 +1097,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBoard: {fileID: 925833033}
   creature: {fileID: 1275071833994288, guid: 6cdf5b20d4997ee4ca689262880c7b03, type: 2}
-  fader: {fileID: 586974483}
+  fader: {fileID: 0}
   canvas: {fileID: 586974482}
   ingameCanvas: {fileID: 1955526010}
   toggleButton: {fileID: 1727872089}
+  ingameMenuScript: {fileID: 1955526015}
 --- !u!1 &618298027
 GameObject:
   m_ObjectHideFlags: 0
