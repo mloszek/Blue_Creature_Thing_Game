@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreatureController : MonoBehaviour {
 
 	private Animator animator;
+	private Random rdm;
 	private int level = 0;
 	private int overallSatisfaction = 0;
 	private int satisfaction = 0;
@@ -13,7 +14,8 @@ public class CreatureController : MonoBehaviour {
 	void Awake(){
 
 		animator = GetComponent<Animator> ();
-
+		rdm = new Random ();
+		//float firstStateChange = WhenNextStateChange ();
 		//level = setLevel();
 		//overallSatisfaction = setOverallSatisfaction();
 		//satisfaction = setSatisfaction ();
@@ -43,28 +45,34 @@ public class CreatureController : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyUp ("q")) {
-			animator.SetTrigger ("idle");
-			Debug.Log ("creature got back to normal!");
-		}
-		if (Input.GetKeyUp ("d")) {
-			animator.SetTrigger ("dead");
-			Debug.Log ("creature died!");
-		}
-		if (Input.GetKeyUp ("e")) {
-			animator.SetTrigger ("evolve");
-			Debug.Log ("creature has evolved!");
-		}
-		if (Input.GetKeyUp ("a")) {
-			animator.SetTrigger ("sleep");
-			Debug.Log ("creature is fast asleep!");
-		}
-		if (Input.GetKeyUp ("s")) {
-			animator.SetTrigger ("sad");
-			Debug.Log ("creature is sad!");
-		}
+	
+
+//		if (Input.GetKeyUp ("q")) {
+//			animator.SetTrigger ("idle");
+//			Debug.Log ("creature got back to normal!");
+//		}
+//		if (Input.GetKeyUp ("d")) {
+//			animator.SetTrigger ("dead");
+//			Debug.Log ("creature died!");
+//		}
+//		if (Input.GetKeyUp ("e")) {
+//			animator.SetTrigger ("evolve");
+//			Debug.Log ("creature has evolved!");
+//		}
+//		if (Input.GetKeyUp ("a")) {
+//			animator.SetTrigger ("sleep");
+//			Debug.Log ("creature is fast asleep!");
+//		}
+//		if (Input.GetKeyUp ("s")) {
+//			animator.SetTrigger ("sad");
+//			Debug.Log ("creature is sad!");
+//		}
 
 
 	}
 
+	float WhenNextStateChange(){
+
+		return Random.Range (5, 30);
+	}
 }

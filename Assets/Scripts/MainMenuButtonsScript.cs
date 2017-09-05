@@ -9,15 +9,13 @@ public class MainMenuButtonsScript : MonoBehaviour
 	public GameObject optionBoard;
 	public GameObject creature;
 	public Fader fader;
-
-	void Awake(){
-		//fader = GetComponent
-	}
+	public GameObject ingameCanvas;
 
 	public void begin ()
 	{
 		Debug.Log ("start");
 		fader.FadeOut ();
+		ingameCanvas.SetActive (true);
 		Instantiate (creature);
 	}
 

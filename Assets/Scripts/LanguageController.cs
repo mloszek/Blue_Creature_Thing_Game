@@ -12,6 +12,10 @@ public class LanguageController : MonoBehaviour {
 	public Text langNameText;
 	public Text volumeText;
 	public Text superModeText;
+	public Text actionText;
+	public Text statusText;
+	public Text mainMenuText;
+	public Text menuText;
 
 	private string[][] languages = new string[2][];
 	private int index = 0;
@@ -24,7 +28,11 @@ public class LanguageController : MonoBehaviour {
 		"QUIT",
 		"Language",
 		"Volume",
-		"Super mode"
+		"Super mode",
+		"ACTION",
+		"STATUS",
+		"MAIN MENU",
+		"M"
 	};
 
 	private string[] wordsPL = {
@@ -34,7 +42,11 @@ public class LanguageController : MonoBehaviour {
 		"WYJŚCIE",
 		"Język",
 		"Głośność",
-		"Tryb :o"
+		"Tryb :o",
+		"DZIAŁANIE",
+		"STATUS",
+		"MENU GŁÓWNE",
+		"M"
 	};
 
 	void Awake (){
@@ -57,5 +69,9 @@ public class LanguageController : MonoBehaviour {
 		langSelText.text = languages [index] [4];
 		volumeText.text = languages [index] [5];
 		superModeText.text = languages [index] [6];
+//		actionText.text = languages [index] [7];
+//		statusText.text = languages [index] [8];
+//		mainMenuText.text = languages [index] [9];
+//		menuText.text = languages [index] [10];
 	}
 }

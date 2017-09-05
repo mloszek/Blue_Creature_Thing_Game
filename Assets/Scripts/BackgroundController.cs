@@ -4,32 +4,26 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour {
 
-	//public Material material;
 	public Texture onDay;
 	public Texture onEvening;
 	public Texture onNight;
-	public Renderer renderer;
-
-	private Texture[] textures;
-	private int index = 0;
-
-	void Start () {
-		textures = new Texture[3];
-		textures [0] = onDay;
-		textures [1] = onEvening;
-		textures [2] = onNight;
-		//renderer = this.GetComponent<MeshRenderer>();
-	}
+	public new Renderer renderer;
 
 	void Update () {
+		
+		checkHour ();
+	}
 
-		if (Input.GetKeyUp ("b")) {
-			Debug.Log("kazam!");
-			index++;
-			if (index > 2) {
-				index = 0;
-			}
-			renderer.material.SetTexture ("_MainTex", textures[index]);
+	void checkHour(){
+	
+		int hour = System.DateTime.Now.Hour;
+
+		if (hour >= 8 && hour < 16) {
+			renderer.material.SetTexture ("_MainTex", onDay);
+		} else if (hour >= 16 && hour < 21) {
+			renderer.material.SetTexture ("_MainTex", onEvening);
+		} else {
+			renderer.material.SetTexture ("_MainTex", onNight);
 		}
 	}
 }

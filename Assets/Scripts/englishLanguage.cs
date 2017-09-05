@@ -9,7 +9,12 @@ public class englishLanguage : MonoBehaviour {
 		"responsible one:",
 		"PLAY",
 		"OPTIONS",
-		"QUIT"
+		"QUIT",
+		"ACTION",
+		"STATUS",
+		"MAIN MENU",
+		"M",
+		"B"
 	};
 
 	public string[] getList(){

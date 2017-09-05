@@ -9,7 +9,12 @@ public class polishLanguage : MonoBehaviour {
 		"jego wina:",
 		"GRAJ",
 		"OPCJE",
-		"WYJŚCIE"
+		"WYJŚCIE",
+		"DZIAŁANIE",
+		"STATUS",
+		"MENU GŁÓWNE",
+		"M",
+		"W"
 	};
 
 	public string[] getList(){
