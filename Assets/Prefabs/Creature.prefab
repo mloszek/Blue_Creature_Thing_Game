@@ -24,11 +24,11 @@ GameObject:
   - component: {fileID: 114944327970246200}
   m_Layer: 0
   m_Name: Creature
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4451176569791862
 Transform:
   m_ObjectHideFlags: 1

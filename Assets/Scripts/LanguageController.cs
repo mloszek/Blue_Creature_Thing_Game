@@ -15,6 +15,7 @@ public class LanguageController : MonoBehaviour {
 	public Text actionText;
 	public Text statusText;
 	public Text mainMenuText;
+	public Text hideMenu;
 	public Text menuText;
 
 	private string[][] languages = new string[2][];
@@ -32,6 +33,7 @@ public class LanguageController : MonoBehaviour {
 		"ACTION",
 		"STATUS",
 		"MAIN MENU",
+		"BACK",
 		"M"
 	};
 
@@ -43,9 +45,10 @@ public class LanguageController : MonoBehaviour {
 		"Język",
 		"Głośność",
 		"Tryb :o",
-		"DZIAŁANIE",
+		"AKCJA",
 		"STATUS",
 		"MENU GŁÓWNE",
+		"WRÓĆ",
 		"M"
 	};
 
@@ -69,9 +72,10 @@ public class LanguageController : MonoBehaviour {
 		langSelText.text = languages [index] [4];
 		volumeText.text = languages [index] [5];
 		superModeText.text = languages [index] [6];
-//		actionText.text = languages [index] [7];
-//		statusText.text = languages [index] [8];
-//		mainMenuText.text = languages [index] [9];
-//		menuText.text = languages [index] [10];
+		actionText.text = languages [index] [7];
+		statusText.text = languages [index] [8];
+		mainMenuText.text = languages [index] [9];
+		hideMenu.text = languages [index] [10];
+		menuText.text = languages [index] [11];
 	}
 }
