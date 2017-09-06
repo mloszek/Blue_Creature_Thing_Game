@@ -6,6 +6,7 @@ TagManager:
   tags:
   - background
   - chmura
+  - Creature
   layers:
   - Default
   - TransparentFX

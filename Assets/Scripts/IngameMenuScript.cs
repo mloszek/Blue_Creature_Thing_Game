@@ -33,4 +33,10 @@ public class IngameMenuScript : MonoBehaviour
 		mainMenuCanvas.SetActive (true);
 	}
 
+	public void getStats ()
+	{
+		string stats = GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().returnStats();
+		Debug.Log (stats);
+	}
+
 }
