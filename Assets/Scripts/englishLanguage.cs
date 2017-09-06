@@ -11,7 +11,7 @@ public class englishLanguage : MonoBehaviour {
 		"OPTIONS",
 		"QUIT",
 		"ACTION",
-		"STATUS",
+		"CONDITION",
 		"MAIN MENU",
 		"M",
 		"B"

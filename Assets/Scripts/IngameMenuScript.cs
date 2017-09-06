@@ -10,6 +10,7 @@ public class IngameMenuScript : MonoBehaviour
 	public GameObject toggleMenuButton;
 	public GameObject buttons;
 	public GameObject creature;
+	public GameObject statPanel;
 
 	public void showMenu ()
 	{
@@ -35,8 +36,21 @@ public class IngameMenuScript : MonoBehaviour
 
 	public void getStats ()
 	{
-		string stats = GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().returnStats();
-		Debug.Log (stats);
+		
+		buttons.SetActive (false);
+		statPanel.SetActive (true);
+//		string stats = GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().returnStats();
+//		Debug.Log (stats);
 	}
+
+	public void hideStats ()
+	{
+		
+		buttons.SetActive (true);
+		statPanel.SetActive (false);
+	}
+
+
+
 
 }

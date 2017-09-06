@@ -31,7 +31,7 @@ public class LanguageController : MonoBehaviour {
 		"Volume",
 		"Super mode",
 		"ACTION",
-		"STATUS",
+		"CONDITION",
 		"MAIN MENU",
 		"BACK",
 		"M"
@@ -46,7 +46,7 @@ public class LanguageController : MonoBehaviour {
 		"Głośność",
 		"Tryb :o",
 		"AKCJA",
-		"STATUS",
+		"KONDYCJA",
 		"MENU GŁÓWNE",
 		"WRÓĆ",
 		"M"
