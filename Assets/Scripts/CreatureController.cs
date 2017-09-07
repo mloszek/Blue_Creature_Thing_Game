@@ -14,7 +14,9 @@ public class CreatureController : MonoBehaviour
 	private int weight = 0;
 	private float stateInterval;
 	private int poopCounter = 0;
+
 	private bool isSick = false;
+	private bool isDead = false;
 
 	private float time;
 	float currentTime = 0f;
@@ -73,7 +75,12 @@ public class CreatureController : MonoBehaviour
 		time++;
 		text.setText (contentment);
 
-		if (weight == 0) {
+		if (isDead) 
+		{
+			contentment = 0;
+			weight = 0;
+		}
+		else if (weight == 0) {
 			if (time > 1000f) {
 				Debug.Log ("!");
 				doEvolve ();
@@ -91,8 +98,13 @@ public class CreatureController : MonoBehaviour
 			}
 
 			if (isSick) {
-				contentment -= 0.003f;
+				contentment -= 0.008f;
 			}
+		}
+
+		if(contentment <= 0)
+		{
+			kill ();
 		}
 
 
@@ -122,6 +134,12 @@ public class CreatureController : MonoBehaviour
 	{
 
 		return Random.Range (30000f, 60000f);
+	}
+
+	public void kill()
+	{
+		animator.SetTrigger ("dead");
+		isDead = true;
 	}
 
 	void makePoop ()

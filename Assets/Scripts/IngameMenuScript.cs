@@ -30,7 +30,10 @@ public class IngameMenuScript : MonoBehaviour
 	public void getBackToMainMenu ()
 	{
 		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 2);
-		GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 0, 2);
+		if (GameObject.FindWithTag ("skull") != null) 
+		{
+			GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 2.22f, 2);
+		}
 		buttons.SetActive (false);
 		wholeCanvas.SetActive (false);
 		mainMenuCanvas.SetActive (true);
