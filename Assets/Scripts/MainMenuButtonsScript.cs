@@ -24,6 +24,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 			Instantiate (creature);
 		}
 		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 0);
+		GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 0, 0);
 		toggleButton.SetActive (true);
 	}
 

@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class CreatureController : MonoBehaviour
 {
+	public GameObject sickIndicator;
 
 	private Animator animator;
 	private Random rdm;
-	private int level = 0;
-	private int overallSatisfaction = 0;
-	private int satisfaction = 0;
+	private int overallSatisfaction = 100;
+	private float contentment = 100;
 	private int weight = 0;
 	private float stateInterval;
+	private int poopCounter = 0;
+	private bool isSick = false;
 
 	private float time;
 	float currentTime = 0f;
@@ -36,19 +38,14 @@ public class CreatureController : MonoBehaviour
 		//weight = setWeight ();
 	}
 
-	public void setLevel (int newValue)
-	{
-		level = newValue;	
-	}
-
 	public void setOverallSatisfaction (int newValue)
 	{
 		overallSatisfaction = newValue;	
 	}
 
-	public void setSatisfaction (int newValue)
+	public void setContentment (float newValue)
 	{
-		satisfaction = newValue;	
+		contentment = newValue;	
 	}
 
 	public void setWeight (int newValue)
@@ -56,10 +53,25 @@ public class CreatureController : MonoBehaviour
 		weight = newValue;	
 	}
 
+	public void setSickness (bool newValue)
+	{
+		isSick = newValue;	
+	}
+
+	public void setPoop (int newValue)
+	{
+		poopCounter = newValue;	
+	}
+
+	public void setAnim (string newValue)
+	{
+		animator.SetTrigger (newValue);	
+	}
+
 	void Update ()
 	{
 		time++;
-		text.setText (time++);
+		text.setText (contentment);
 
 		if (weight == 0) {
 			if (time > 1000f) {
@@ -70,10 +82,17 @@ public class CreatureController : MonoBehaviour
 				time = 0;
 			}
 		}
-		else if (stateInterval < time && weight > 0) {
+		else if (weight > 0) {
+			if (stateInterval < time){
+			
 			stateLottery ();
 			stateInterval = 1000f;
 			time = 0;
+			}
+
+			if (isSick) {
+				contentment -= 0.003f;
+			}
 		}
 
 
@@ -107,8 +126,24 @@ public class CreatureController : MonoBehaviour
 
 	void makePoop ()
 	{
-		Debug.Log ("creature made poo!");
+		if (poopCounter < 3) {
+			poopCounter += 1;
+			Debug.Log ("creature made poo!");
+		} else if (isSick == false) {
+			makeSick ();
+		}
 	}
+
+	void makeSick ()
+	{
+		if (isSick == false) {
+			isSick = true;
+			animator.SetTrigger ("sad");
+			Instantiate (sickIndicator);
+			Debug.Log ("creature is sick!");
+		}
+	}
+
 
 	void makeBored ()
 	{
@@ -125,10 +160,6 @@ public class CreatureController : MonoBehaviour
 		Debug.Log ("creature isHungry!");
 	}
 
-	void makeSick ()
-	{
-		Debug.Log ("creature is sick!");
-	}
 
 	void doEvolve ()
 	{
@@ -137,7 +168,7 @@ public class CreatureController : MonoBehaviour
 
 	void stateLottery ()
 	{
-		switch (Random.Range (1, 5)) {
+		switch (Random.Range (1, 1)) {
 
 		case 1: 
 			makePoop ();
@@ -160,7 +191,6 @@ public class CreatureController : MonoBehaviour
 	void OnApplicationPause (bool pauseStatus)
 	{
 		
-
 		if (pauseStatus) {
 			currentTime = Time.realtimeSinceStartup;
 		} else {
@@ -172,7 +202,7 @@ public class CreatureController : MonoBehaviour
 
 	public string returnStats()
 	{
-		string stats = "weight: " + weight + "\nlevel: " + level;
+		string stats = /*"overallSatisfaction: " + overallSatisfaction + "\ncontentment: " + contentment + "\nweight: " + weight + */"poop: " + poopCounter + "\nsick: " + isSick;
 		return stats;
 	}
 }
