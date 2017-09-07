@@ -12,6 +12,13 @@ public class ActionScript : MonoBehaviour {
 
 	public void cleanPoop(){
 		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setPoop (0);
+		GameObject[] poo = GameObject.FindGameObjectsWithTag ("poo");
+		if (poo != null) 
+		{
+			foreach (GameObject poop in poo) {
+				Destroy (poop);
+			}
+		}
 	}
 
 	public void killSwitch ()

@@ -28,6 +28,14 @@ public class MainMenuButtonsScript : MonoBehaviour
 		{
 			GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 2.22f, 0);
 		}
+
+		GameObject[] poo = GameObject.FindGameObjectsWithTag ("poo");
+		if (poo != null) 
+		{
+			foreach (GameObject poop in poo) {
+				poop.transform.position = new Vector3 (Random.Range(-2f, 2f), -1.6f, -3f);
+			}
+		}
 		toggleButton.SetActive (true);
 	}
 

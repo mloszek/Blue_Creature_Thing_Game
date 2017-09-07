@@ -8,6 +8,7 @@ TagManager:
   - chmura
   - Creature
   - skull
+  - poo
   layers:
   - Default
   - TransparentFX

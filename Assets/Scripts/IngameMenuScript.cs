@@ -29,10 +29,17 @@ public class IngameMenuScript : MonoBehaviour
 
 	public void getBackToMainMenu ()
 	{
-		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 2);
+		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 2f);
 		if (GameObject.FindWithTag ("skull") != null) 
 		{
-			GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 2.22f, 2);
+			GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 2.22f, 2f);
+		}
+		GameObject[] poo = GameObject.FindGameObjectsWithTag ("poo");
+		if (poo != null) 
+		{
+			foreach (GameObject poop in poo) {
+				poop.transform.position = new Vector3 (0, -1.6f, 2f);
+			}
 		}
 		buttons.SetActive (false);
 		wholeCanvas.SetActive (false);

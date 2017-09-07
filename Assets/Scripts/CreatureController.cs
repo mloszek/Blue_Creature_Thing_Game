@@ -6,6 +6,7 @@ using UnityEngine;
 public class CreatureController : MonoBehaviour
 {
 	public GameObject sickIndicator;
+	public GameObject poop;
 
 	private Animator animator;
 	private Random rdm;
@@ -26,6 +27,8 @@ public class CreatureController : MonoBehaviour
 
 	void Awake ()
 	{
+		Application.runInBackground = true;
+
 		text = GameObject.FindWithTag ("Player").GetComponent<tesText> ();
 		text.setText (0);
 
@@ -139,6 +142,10 @@ public class CreatureController : MonoBehaviour
 	public void kill()
 	{
 		animator.SetTrigger ("dead");
+		if (GameObject.FindWithTag ("skull") != null) 
+		{
+			Destroy (GameObject.FindWithTag ("skull"));
+		}
 		isDead = true;
 	}
 
@@ -146,7 +153,7 @@ public class CreatureController : MonoBehaviour
 	{
 		if (poopCounter < 3) {
 			poopCounter += 1;
-			Debug.Log ("creature made poo!");
+			Instantiate (poop, new Vector3(Random.Range(-2f, 2f), -1.6f, -3f), Quaternion.identity);
 		} else if (isSick == false) {
 			makeSick ();
 		}
@@ -158,7 +165,6 @@ public class CreatureController : MonoBehaviour
 			isSick = true;
 			animator.SetTrigger ("sad");
 			Instantiate (sickIndicator);
-			Debug.Log ("creature is sick!");
 		}
 	}
 
