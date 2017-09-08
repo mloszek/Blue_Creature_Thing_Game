@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\MainMenuButtonsScript.cs" />
      <Compile Include="Assets\Scripts\polishLanguage.cs" />
      <Compile Include="Assets\Scripts\Shaker.cs" />
+     <Compile Include="Assets\Scripts\statsPanelScript.cs" />
      <Compile Include="Assets\Scripts\tesText.cs" />
      <None Include="Assets\2D Sky FREE\Demo\Scripts\Note.txt" />
      <None Include="Assets\Backyard - Free\Readme.txt" />

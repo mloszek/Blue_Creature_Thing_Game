@@ -8,6 +8,7 @@ public class ActionScript : MonoBehaviour {
 		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSickness (false);
 		Destroy (GameObject.FindWithTag ("skull"));
 		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setAnim ("idle");
+		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().resetSickTimer ();
 	}
 
 	public void cleanPoop(){

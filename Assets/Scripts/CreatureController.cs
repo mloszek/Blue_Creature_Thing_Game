@@ -10,11 +10,13 @@ public class CreatureController : MonoBehaviour
 
 	private Animator animator;
 	private Random rdm;
-	private int overallSatisfaction = 100;
-	private float contentment = 100;
-	private int weight = 0;
+	private int comfort = 100;
+	private float happiness = 100f;
+	private int level = 0;
 	private float stateInterval;
 	private int poopCounter = 0;
+	private float deathSickTimer = 100f;
+	private float hunger = 0f;
 
 	private bool isSick = false;
 	private bool isDead = false;
@@ -25,37 +27,42 @@ public class CreatureController : MonoBehaviour
 
 	private tesText text;
 
+	System.Diagnostics.Stopwatch timer;
+
 	void Awake ()
 	{
+		timer = new System.Diagnostics.Stopwatch ();
+		timer.Start ();
+
 		Application.runInBackground = true;
 
 		text = GameObject.FindWithTag ("Player").GetComponent<tesText> ();
-		text.setText (0);
+		text.setText (System.TimeSpan.Zero);
 
 		time = 0;
 		animator = GetComponent<Animator> ();
 		rdm = new Random ();
 		stateInterval = 1000f;
-
-		//level = setLevel();
-		//overallSatisfaction = setOverallSatisfaction();
-		//satisfaction = setSatisfaction ();
-		//weight = setWeight ();
 	}
 
-	public void setOverallSatisfaction (int newValue)
+	public int getLevel()
 	{
-		overallSatisfaction = newValue;	
+		return level;
 	}
 
-	public void setContentment (float newValue)
+	public void setHunger (float newValue)
 	{
-		contentment = newValue;	
+		hunger = newValue;	
 	}
 
-	public void setWeight (int newValue)
+	public void setComfort (int newValue)
 	{
-		weight = newValue;	
+		comfort = newValue;	
+	}
+
+	public void setHappiness (float newValue)
+	{
+		happiness = newValue;	
 	}
 
 	public void setSickness (bool newValue)
@@ -73,64 +80,43 @@ public class CreatureController : MonoBehaviour
 		animator.SetTrigger (newValue);	
 	}
 
+	public void resetSickTimer ()
+	{
+		deathSickTimer = 100f;	
+	}
+
+
 	void Update ()
 	{
-		time++;
-		text.setText (contentment);
+		
+		text.setText (timer.Elapsed);
 
-		if (isDead) 
-		{
-			contentment = 0;
-			weight = 0;
-		}
-		else if (weight == 0) {
-			if (time > 1000f) {
+		if (isDead) {
+			happiness = 0;
+		} else if (level == 0) {
+			if (timer.Elapsed.Seconds >= 10) {
 				Debug.Log ("!");
 				doEvolve ();
-				weight = weight + 1;
-				setWeight (weight);
-				time = 0;
+				level = level + 1;
+				timer.Reset ();
+				timer.Start ();
 			}
-		}
-		else if (weight > 0) {
-			if (stateInterval < time){
-			
-			stateLottery ();
-			stateInterval = 1000f;
-			time = 0;
+		} else if (level > 0) {
+			if (timer.Elapsed.Seconds >= 10) {
+				makePoop ();
+				timer.Reset ();
+				timer.Start ();
 			}
 
 			if (isSick) {
-				contentment -= 0.008f;
+				happiness -= 0.005f;
+				deathSickTimer -= 0.008f;
 			}
 		}
 
-		if(contentment <= 0)
-		{
+		if (happiness <= 0 || deathSickTimer <= 0 || hunger >= 100) {
 			kill ();
 		}
-
-
-//		if (Input.GetKeyUp ("q")) {
-//			animator.SetTrigger ("idle");
-//			Debug.Log ("creature got back to normal!");
-//		}
-//		if (Input.GetKeyUp ("d")) {
-//			animator.SetTrigger ("dead");
-//			Debug.Log ("creature died!");
-//		}
-//		if (Input.GetKeyUp ("e")) {
-//			animator.SetTrigger ("evolve");
-//			Debug.Log ("creature has evolved!");
-//		}
-//		if (Input.GetKeyUp ("a")) {
-//			animator.SetTrigger ("sleep");
-//			Debug.Log ("creature is fast asleep!");
-//		}
-//		if (Input.GetKeyUp ("s")) {
-//			animator.SetTrigger ("sad");
-//			Debug.Log ("creature is sad!");
-//		}
 	}
 
 	float WhenNextStateChange ()
@@ -139,11 +125,10 @@ public class CreatureController : MonoBehaviour
 		return Random.Range (30000f, 60000f);
 	}
 
-	public void kill()
+	public void kill ()
 	{
 		animator.SetTrigger ("dead");
-		if (GameObject.FindWithTag ("skull") != null) 
-		{
+		if (GameObject.FindWithTag ("skull") != null) {
 			Destroy (GameObject.FindWithTag ("skull"));
 		}
 		isDead = true;
@@ -153,7 +138,7 @@ public class CreatureController : MonoBehaviour
 	{
 		if (poopCounter < 3) {
 			poopCounter += 1;
-			Instantiate (poop, new Vector3(Random.Range(-2f, 2f), -1.6f, -3f), Quaternion.identity);
+			Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, -3f), Quaternion.identity);
 		} else if (isSick == false) {
 			makeSick ();
 		}
@@ -204,9 +189,6 @@ public class CreatureController : MonoBehaviour
 			makeSleep ();
 			break;
 		case 4: 
-			makeHungry ();
-			break;
-		case 5: 
 			makeSick ();
 			break;
 		}
@@ -224,9 +206,9 @@ public class CreatureController : MonoBehaviour
 		}
 	}
 
-	public string returnStats()
+	public string returnStats ()
 	{
-		string stats = /*"overallSatisfaction: " + overallSatisfaction + "\ncontentment: " + contentment + "\nweight: " + weight + */"poop: " + poopCounter + "\nsick: " + isSick;
+		string stats = /*"comfort: " + comfort + "\ncontentment: " + contentment +*/"poop: " + poopCounter + "\nsick: " + isSick;
 		return stats;
 	}
 }

@@ -17,6 +17,10 @@ public class LanguageController : MonoBehaviour {
 	public Text mainMenuText;
 	public Text hideMenu;
 	public Text menuText;
+	public Text levelText;
+	public Text comfortText;
+	public Text happyText;
+	public Text hungerText;
 
 	private string[][] languages = new string[2][];
 	private int index = 0;
@@ -34,7 +38,11 @@ public class LanguageController : MonoBehaviour {
 		"CONDITION",
 		"MAIN MENU",
 		"BACK",
-		"M"
+		"M",
+		"LEVEL",
+		"COMFORT",
+		"HAPPINESS",
+		"HUNGER"
 	};
 
 	private string[] wordsPL = {
@@ -49,7 +57,11 @@ public class LanguageController : MonoBehaviour {
 		"KONDYCJA",
 		"MENU GŁÓWNE",
 		"WRÓĆ",
-		"M"
+		"M",
+		"POZIOM",
+		"KOMFORT",
+		"SZCZĘŚCIE",
+		"GŁÓD"
 	};
 
 	void Awake (){
@@ -77,5 +89,9 @@ public class LanguageController : MonoBehaviour {
 		mainMenuText.text = languages [index] [9];
 		hideMenu.text = languages [index] [10];
 		menuText.text = languages [index] [11];
+		levelText.text = languages [index] [12];
+		comfortText.text = languages [index] [13];
+		happyText.text = languages [index] [14];
+		hungerText.text = languages [index] [15];
 	}
 }

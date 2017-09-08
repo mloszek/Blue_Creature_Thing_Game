@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class tesText : MonoBehaviour {
 
@@ -12,8 +13,10 @@ public class tesText : MonoBehaviour {
 		text = GetComponent<Text> ();
 	}
 
-	public void setText(float number)
+	public void setText(TimeSpan time)
 	{
-		text.text = number.ToString ();
+		text.text = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+			time.Hours, time.Minutes, time.Seconds,
+			time.Milliseconds / 10);
 	}
 }
