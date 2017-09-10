@@ -9,21 +9,24 @@ public class CreatureController : MonoBehaviour
 	public GameObject poop;
 
 	private Animator animator;
-	private Random rdm;
-	private int comfort = 100;
 	private float happiness = 100f;
 	private int level = 0;
-	private float stateInterval;
 	private int poopCounter = 0;
 	private float deathSickTimer = 100f;
 	private float hunger = 0f;
+	private float poopPressure = 0f;
+	private float boredom = 0f;
 
-	private bool isSick = false;
-	private bool isDead = false;
+	public bool isSick = false;
+	public bool isDead = false;
+	public bool isHungry = false;
+	public bool isBored = false;
+	public bool isAsleep = false;
 
-	private float time;
-	float currentTime = 0f;
-	float timeWhenPaused = 0f;
+
+//	private float time;
+//	float currentTime = 0f;
+//	float timeWhenPaused = 0f;
 
 	private tesText text;
 
@@ -39,10 +42,7 @@ public class CreatureController : MonoBehaviour
 		text = GameObject.FindWithTag ("Player").GetComponent<tesText> ();
 		text.setText (System.TimeSpan.Zero);
 
-		time = 0;
 		animator = GetComponent<Animator> ();
-		rdm = new Random ();
-		stateInterval = 1000f;
 	}
 
 	public void startTimer ()
@@ -68,11 +68,23 @@ public class CreatureController : MonoBehaviour
 	public void setHunger (float newValue)
 	{
 		hunger = newValue;	
+		isHungry = false;
+		animator.SetTrigger ("idle");
 	}
 
-	public void setComfort (int newValue)
+	public float getBoredom()
 	{
-		comfort = newValue;	
+		return boredom;
+	}
+
+	public void setBoredom (float newValue)
+	{
+		
+		boredom = newValue;	
+		if(isBored)
+			animator.SetTrigger ("idle");
+		isBored = false;
+
 	}
 
 	public void setHappiness (float newValue)
@@ -110,50 +122,93 @@ public class CreatureController : MonoBehaviour
 		if (isDead) {
 			return;
 		} else if (level == 0) {
-			if (timer.Elapsed.Seconds >= 10) {
-				Debug.Log ("!");
+			if (timer.Elapsed.Minutes >= 3) {
 				animator.SetTrigger ("evolve");
 				level = level + 1;
 				timer.Reset ();
 				timer.Start ();
 			}
-		} else if (level == 1) {
-//			if (timer.Elapsed.Seconds >= 10) {
-//				Debug.Log ("!");
-//				animator.SetTrigger ("evolve");
-//				level = level + 1;
-//				timer.Reset ();
-//				timer.Start ();
-//			}
-			//a co jezeli bedzie smutny bo bedzie glodny ale bedzie tez chory?
-			hunger += 0.003f;
-
-			if (timer.Elapsed.Seconds >= 10) {
-				makePoop ();
+		} else if (level > 0) {
+			
+			if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				animator.SetTrigger ("evolve");
+				level = level + 1;
 				timer.Reset ();
 				timer.Start ();
+			} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				if (happiness >= 50) {
+					animator.SetTrigger ("evolveGood");
+					level = level + 1;
+					timer.Reset ();
+					timer.Start ();
+				} else {
+					animator.SetTrigger ("evolveBad");
+					level = level + 1;
+					timer.Reset ();
+					timer.Start ();
+				}
+			} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				if (happiness >= 50) {
+					animator.SetTrigger ("evolveGood");
+					level = level + 1;
+					timer.Reset ();
+					timer.Start ();
+				} else {
+					animator.SetTrigger ("evolveBad");
+					level = level + 1;
+					timer.Reset ();
+					timer.Start ();
+				}
+			} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				animator.SetTrigger ("goToHeaven");
+				isDead = true;
+				timer.Reset ();
 			}
 
-			if (isSick) {
-				happiness -= 0.005f;
-				deathSickTimer -= 0.008f;
-				timer.Stop ();
+			if (isAsleep == false) {
+				
+				hunger += 0.003f;
+				poopPressure += 0.008f;
+
+
+				if (isBored) {
+					happiness -= 0.005f;
+				} else
+					boredom += 0.001f;
+
+				if (isSick) {
+					happiness -= 0.005f;
+					deathSickTimer -= 0.008f;
+				}
+
+				if (isHungry) {
+					happiness -= 0.005f;
+				}
+
+				if (hunger > 70f && isHungry == false) {
+					isHungry = true;
+					animator.SetTrigger ("sad");
+					timer.Stop ();
+				}
+
+				if (boredom > 60f && isBored == false) {
+					makeBored ();
+				}
+
+				if (poopPressure >= 100f) {
+					makePoop ();
+					poopPressure = Random.Range (0, 20f);
+				}
+					
 			}
+
+
 		}
 
 
 		if (happiness <= 0 || deathSickTimer <= 0 || hunger >= 100) {
 			kill ();
 		}
-
-//		if (!isDead && )
-//			hunger += 0.003f;
-	}
-
-	float WhenNextStateChange ()
-	{
-
-		return Random.Range (30000f, 60000f);
 	}
 
 	public void kill ()
@@ -190,12 +245,15 @@ public class CreatureController : MonoBehaviour
 			isSick = true;
 			animator.SetTrigger ("sad");
 			Instantiate (sickIndicator);
+			timer.Stop ();
 		}
 	}
 
 	void makeBored ()
 	{
-		Debug.Log ("creature is bored!");
+		isBored = true;
+		animator.SetTrigger ("sad");
+		timer.Stop ();
 	}
 
 	void makeSleep ()
@@ -203,45 +261,21 @@ public class CreatureController : MonoBehaviour
 		Debug.Log ("creature fell asleep!");
 	}
 
-	void makeHungry ()
-	{
-		Debug.Log ("creature isHungry!");
-	}
-
-	void stateLottery ()
-	{
-		switch (Random.Range (1, 1)) {
-
-		case 1: 
-			makePoop ();
-			break;
-		case 2: 
-			makeBored ();
-			break;
-		case 3: 
-			makeSleep ();
-			break;
-		case 4: 
-			makeSick ();
-			break;
-		}
-	}
-
-	void OnApplicationPause (bool pauseStatus)
-	{
-		
-		if (pauseStatus) {
-			currentTime = Time.realtimeSinceStartup;
-		} else {
-			timeWhenPaused = Time.realtimeSinceStartup - currentTime;
-			Debug.Log (timeWhenPaused);
-			time += timeWhenPaused * 80;
-		}
-	}
-
-	public string returnStats ()
-	{
-		string stats = /*"comfort: " + comfort + "\ncontentment: " + contentment +*/"poop: " + poopCounter + "\nsick: " + isSick;
-		return stats;
-	}
+//	void OnApplicationPause (bool pauseStatus)
+//	{
+//		
+//		if (pauseStatus) {
+//			currentTime = Time.realtimeSinceStartup;
+//		} else {
+//			timeWhenPaused = Time.realtimeSinceStartup - currentTime;
+//			Debug.Log (timeWhenPaused);
+//			time += timeWhenPaused * 80;
+//		}
+//	}
+//
+//	public string returnStats ()
+//	{
+//		string stats = /*"comfort: " + comfort + "\ncontentment: " + contentment +*/"poop: " + poopCounter + "\nsick: " + isSick;
+//		return stats;
+//	}
 }

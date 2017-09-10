@@ -9,9 +9,11 @@ public class GameController : MonoBehaviour
 	public float startWait;
 	public float spawnPointX;
 	public float spawnPointY;
+	public AudioSource source;
 
 	void Start ()
 	{
+		source.Play ();
 		StartCoroutine (SpawnClouds ());
 	}
 

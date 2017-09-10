@@ -7,12 +7,13 @@ public class ActionScript : MonoBehaviour
 
 	public void giveMedicine ()
 	{
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSickness (false);
-		Destroy (GameObject.FindWithTag ("skull"));
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setAnim ("idle");
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().resetSickTimer ();
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
-
+		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isSick == true) {
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSickness (false);
+			Destroy (GameObject.FindWithTag ("skull"));
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setAnim ("idle");
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().resetSickTimer ();
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
+		}
 	}
 
 	public void cleanPoop ()
@@ -28,14 +29,25 @@ public class ActionScript : MonoBehaviour
 
 	public void feed ()
 	{
-		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () > 50f)
+		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == true) {
 			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setHunger (0);
-		else if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () < 20f
-		         && GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () > 1f) {
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
+		} else if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == false &&
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () >= 20f){
 			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setHunger (0);
-			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().makePoop ();
-		} else
+		}  else if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == false &&
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () < 20f)
 			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().makeSick ();
+		
+	}
+
+	public void entertain ()
+	{
+		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isBored == true) {
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setBoredom (0);
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
+		}else
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setBoredom (0);
 	}
 
 	public void killSwitch ()

@@ -40,7 +40,7 @@ public class LanguageController : MonoBehaviour {
 		"BACK",
 		"M",
 		"LEVEL",
-		"COMFORT",
+		"ENTERTAINMENT",
 		"HAPPINESS",
 		"HUNGER"
 	};
@@ -59,7 +59,7 @@ public class LanguageController : MonoBehaviour {
 		"WRÓĆ",
 		"M",
 		"POZIOM",
-		"KOMFORT",
+		"ROZRYWKA",
 		"SZCZĘŚCIE",
 		"GŁÓD"
 	};

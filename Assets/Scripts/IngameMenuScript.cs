@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IngameMenuScript : MonoBehaviour
 {
-
+	public AudioSource source;
 	public GameObject mainMenuCanvas;
 	public GameObject wholeCanvas;
 	public GameObject toggleMenuButton;
@@ -15,20 +15,21 @@ public class IngameMenuScript : MonoBehaviour
 
 	public void showMenu ()
 	{
-
+		source.Play ();
 		buttons.SetActive (true);
 		toggleMenuButton.SetActive (false);
 	}
 
 	public void hideMenu ()
 	{
-
+		source.Play ();
 		buttons.SetActive (false);
 		toggleMenuButton.SetActive (true);
 	}
 
 	public void getBackToMainMenu ()
 	{
+		source.Play ();
 		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 2f);
 		if (GameObject.FindWithTag ("skull") != null) 
 		{
@@ -48,24 +49,23 @@ public class IngameMenuScript : MonoBehaviour
 
 	public void getStats ()
 	{
-		
+		source.Play ();
 		buttons.SetActive (false);
 		statPanel.SetActive (true);
-		string stats = GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().returnStats();
-		Debug.Log (stats);
+//		string stats = GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().returnStats();
+//		Debug.Log (stats);
 	}
 
 	public void getActions ()
 	{
-
+		source.Play ();
 		buttons.SetActive (false);
 		actionPanel.SetActive (true);
-		Debug.Log ("action");
 	}
 
 	public void hidePanel ()
 	{
-		
+		source.Play ();
 		buttons.SetActive (true);
 		statPanel.SetActive (false);
 		actionPanel.SetActive (false);

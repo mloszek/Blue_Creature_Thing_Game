@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonsScript : MonoBehaviour
 {
+	public AudioSource source;
 	public GameObject optionBoard;
 	public GameObject creature;
 	public Fader fader;
@@ -17,6 +18,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 
 	public void begin ()
 	{
+		source.Play ();
 		canvas.SetActive (false);
 		ingameCanvas.SetActive (true);
 		if (GameObject.FindWithTag ("Creature") == null) 
@@ -41,16 +43,19 @@ public class MainMenuButtonsScript : MonoBehaviour
 
 	public void options ()
 	{
+		source.Play ();
 		optionBoard.SetActive (true);
 	}
 
 	public void quit ()
 	{
+		source.Play ();
 		Application.Quit ();
 	}
 
 	public void closeOptionWindow ()
 	{
+		source.Play ();
 		optionBoard.SetActive (false);
 	}
 }
