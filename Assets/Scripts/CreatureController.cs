@@ -45,9 +45,24 @@ public class CreatureController : MonoBehaviour
 		stateInterval = 1000f;
 	}
 
+	public void startTimer ()
+	{
+		timer.Start ();
+	}
+
 	public int getLevel()
 	{
 		return level;
+	}
+
+	public float getHappiness()
+	{
+		return happiness;
+	}
+
+	public float getHunger()
+	{
+		return hunger;
 	}
 
 	public void setHunger (float newValue)
@@ -91,17 +106,28 @@ public class CreatureController : MonoBehaviour
 		
 		text.setText (timer.Elapsed);
 
+
 		if (isDead) {
-			happiness = 0;
+			return;
 		} else if (level == 0) {
 			if (timer.Elapsed.Seconds >= 10) {
 				Debug.Log ("!");
-				doEvolve ();
+				animator.SetTrigger ("evolve");
 				level = level + 1;
 				timer.Reset ();
 				timer.Start ();
 			}
-		} else if (level > 0) {
+		} else if (level == 1) {
+//			if (timer.Elapsed.Seconds >= 10) {
+//				Debug.Log ("!");
+//				animator.SetTrigger ("evolve");
+//				level = level + 1;
+//				timer.Reset ();
+//				timer.Start ();
+//			}
+			//a co jezeli bedzie smutny bo bedzie glodny ale bedzie tez chory?
+			hunger += 0.003f;
+
 			if (timer.Elapsed.Seconds >= 10) {
 				makePoop ();
 				timer.Reset ();
@@ -111,12 +137,17 @@ public class CreatureController : MonoBehaviour
 			if (isSick) {
 				happiness -= 0.005f;
 				deathSickTimer -= 0.008f;
+				timer.Stop ();
 			}
 		}
+
 
 		if (happiness <= 0 || deathSickTimer <= 0 || hunger >= 100) {
 			kill ();
 		}
+
+//		if (!isDead && )
+//			hunger += 0.003f;
 	}
 
 	float WhenNextStateChange ()
@@ -134,7 +165,16 @@ public class CreatureController : MonoBehaviour
 		isDead = true;
 	}
 
-	void makePoop ()
+	public void goToHeaven ()
+	{
+		animator.SetTrigger ("goToHeaven");
+		if (GameObject.FindWithTag ("skull") != null) {
+			Destroy (GameObject.FindWithTag ("skull"));
+		}
+		isDead = true;
+	}
+
+	public void makePoop ()
 	{
 		if (poopCounter < 3) {
 			poopCounter += 1;
@@ -144,7 +184,7 @@ public class CreatureController : MonoBehaviour
 		}
 	}
 
-	void makeSick ()
+	public void makeSick ()
 	{
 		if (isSick == false) {
 			isSick = true;
@@ -152,7 +192,6 @@ public class CreatureController : MonoBehaviour
 			Instantiate (sickIndicator);
 		}
 	}
-
 
 	void makeBored ()
 	{
@@ -167,12 +206,6 @@ public class CreatureController : MonoBehaviour
 	void makeHungry ()
 	{
 		Debug.Log ("creature isHungry!");
-	}
-
-
-	void doEvolve ()
-	{
-		animator.SetTrigger ("evolve");
 	}
 
 	void stateLottery ()
