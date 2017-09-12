@@ -19,4 +19,9 @@ public class tesText : MonoBehaviour {
 			time.Hours, time.Minutes, time.Seconds,
 			time.Milliseconds / 10);
 	}
+
+//	public void setText(float time)
+//	{
+//		text.text = time.ToString();
+//	}
 }

@@ -65,6 +65,9 @@ public class LanguageController : MonoBehaviour {
 	};
 
 	void Awake (){
+		
+		Application.runInBackground = true;
+
 		languages[0] = wordsEN;
 		languages [1] = wordsPL;
 		refreshWords ();

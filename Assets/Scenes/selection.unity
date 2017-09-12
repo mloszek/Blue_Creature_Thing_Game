@@ -308,7 +308,18 @@ MonoBehaviour:
   m_Value: 0.65
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 586974489}
+        m_MethodName: changeVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &147824732
@@ -1301,7 +1312,7 @@ GameObject:
   - component: {fileID: 586974489}
   m_Layer: 5
   m_Name: MainMenuCanvas
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1501,7 +1512,7 @@ GameObject:
   - component: {fileID: 675675773}
   - component: {fileID: 675675772}
   m_Layer: 5
-  m_Name: killButton
+  m_Name: sleepButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,11 +1529,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876344850}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74, y: -200}
+  m_AnchoredPosition: {x: -100, y: -200}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675675772
@@ -1565,7 +1576,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 876344851}
-        m_MethodName: killSwitch
+        m_MethodName: putToSleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1596,7 +1607,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0fdd38e203acfb4fa25ba7fea61f185, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a677873680f610498cc4c5a1dc4f81a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1621,7 +1632,7 @@ GameObject:
   - component: {fileID: 685299717}
   m_Layer: 0
   m_Name: Directional light
-  m_TagString: Untagged
+  m_TagString: DirectionalLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1842,7 +1853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 60}
+  m_AnchoredPosition: {x: 240, y: 90}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795416763
@@ -1972,7 +1983,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 804186514}
+      - m_Target: {fileID: 836954960}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -2029,7 +2040,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d8ec81bd03c74801b1505e1eb7215ee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2227,7 +2238,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d8ec81bd03c74801b1505e1eb7215ee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2687,8 +2698,8 @@ RectTransform:
   - {fileID: 1312787072}
   - {fileID: 1164954913}
   - {fileID: 789387837}
-  - {fileID: 2086111422}
   - {fileID: 675675771}
+  - {fileID: 2086111422}
   m_Father: {fileID: 1955526014}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3318,7 +3329,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1063101577}
+      - m_Target: {fileID: 836954960}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -3375,7 +3386,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d8ec81bd03c74801b1505e1eb7215ee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4287,7 +4298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240, y: 80}
+  m_AnchoredPosition: {x: -240, y: 120}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445221133
@@ -4686,7 +4697,7 @@ RectTransform:
   m_GameObject: {fileID: 1511441975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1057048426}
   m_RootOrder: 0
@@ -5955,7 +5966,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1825500605}
+      - m_Target: {fileID: 836954960}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -5980,7 +5991,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d8ec81bd03c74801b1505e1eb7215ee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7018,11 +7029,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876344850}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -200}
+  m_AnchoredPosition: {x: 74, y: -200}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086111423
@@ -7063,7 +7074,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086111424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 876344851}
+        m_MethodName: wakeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2086111424

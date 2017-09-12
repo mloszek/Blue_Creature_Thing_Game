@@ -9,6 +9,8 @@ TagManager:
   - Creature
   - skull
   - poo
+  - DirectionalLight
+  - MainMenu
   layers:
   - Default
   - TransparentFX

@@ -57,6 +57,7 @@ public class Fader : MonoBehaviour
 		while (canvasGroup.alpha > 0) {
 			elapsedTime += Time.deltaTime;
 			canvasGroup.alpha = Mathf.Clamp01 (1 - (elapsedTime / fadeOutTime));
+			GameObject.FindWithTag ("GameController").GetComponent<AudioSource> ().volume = Mathf.Clamp01 (1 - (elapsedTime / fadeOutTime));
 			yield return null;
 		}
 

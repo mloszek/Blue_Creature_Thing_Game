@@ -58,4 +58,12 @@ public class MainMenuButtonsScript : MonoBehaviour
 		source.Play ();
 		optionBoard.SetActive (false);
 	}
+
+	public void changeVolume(float newValue)
+	{
+		source.volume = newValue;
+		if (GameObject.FindWithTag ("Creature") != null) {
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSourceVolume (newValue);
+		}
+	}
 }

@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainMenuButtonsScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LinksController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="16" Column="18" />
-      <File FileName="Assets\Scripts\LinksController.cs" Line="28" Column="29" />
-      <File FileName="Assets\Scripts\MainMenuButtonsScript.cs" Line="58" Column="18" />
-      <File FileName="Assets\Scripts\IngameMenuScript.cs" Line="68" Column="18" />
-      <File FileName="Assets\Scripts\CreatureController.cs" Line="171" Column="26" />
+      <File FileName="Assets\Scripts\CreatureController.cs" Line="277" Column="69" />
+      <File FileName="Assets\Scripts\MainMenuButtonsScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\IngameMenuScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ActionScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\tesText.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LinksController.cs" Line="28" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

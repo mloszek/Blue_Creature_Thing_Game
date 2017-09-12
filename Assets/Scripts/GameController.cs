@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
 	void Start ()
 	{
+		Application.runInBackground = true;
 		source.Play ();
 		StartCoroutine (SpawnClouds ());
 	}

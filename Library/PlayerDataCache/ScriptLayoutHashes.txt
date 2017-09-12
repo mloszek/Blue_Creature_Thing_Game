@@ -18,6 +18,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 5667fb372c2b292ccdec2a31aaac98fa UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Shaker
+9be0c92f7d7f77d7c9849384a721bdec Assembly-CSharp.dll:.statsPanelScript
 e7cecaedb57da7aa2da2ecf128a29c40 Assembly-UnityScript.dll:.GA_FREE_JS_Demo05
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -98,6 +99,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 5667fb372c2b292ccdec2a31aaac98fa UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 5667fb372c2b292ccdec2a31aaac98fa UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.tesText
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -116,15 +118,15 @@ e7cecaedb57da7aa2da2ecf128a29c40 Assembly-CSharp.dll:.GA_FREE_Demo04
 f4383ff5b94d719d7834c93daba7bf72 Assembly-CSharp.dll:.GE_UIResponder
 4cdf770be564a7ce52469d3880cbbf79 Assembly-UnityScript.dll:.GA_FREE_JS_Demo08
 05524b8f659e7bfe5756d1335fec24ba GETween.dll:.GETween
-7a92894cbc6bfe1244fe5c4182c384b2 Assembly-CSharp.dll:.IngameMenuScript
+2582dde1e6abce2a11f9ab3de5cbb48f Assembly-CSharp.dll:.IngameMenuScript
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CreatureController
+4033a1bedef071b1135dadd5e2696e07 Assembly-CSharp.dll:.CreatureController
 05524b8f659e7bfe5756d1335fec24ba Assembly-UnityScript.dll:.GA_FREE_JS_OpenOtherScene
-d8de2faed863bd683b79eb4cea1ba3bb Assembly-CSharp.dll:.GameController
+a2f36ebf895e71ac471507d0aa71987d Assembly-CSharp.dll:.GameController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GA_FREE_Demo00
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GE_ToggleFullScreenUI
 3856f2aa7360639fd88a0708aa4ddaa1 Assembly-UnityScript.dll:.GA_FREE_JS_Demo07
@@ -152,7 +154,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 8e9ebc275316962c594df65f06dc71a3 2D Sky FREE.dll:.GE2DSkyFREE_Base2DSky
 0767503cf32e46c7bb136c0b042bbab7 2D Sky FREE.dll:.GE2DSkyFREE_CloudFlow
 8e9ebc275316962c594df65f06dc71a3 2D Sky FREE.dll:.GE2DSkyFREE_SkyBG
-d98105ab4843e36a24d99f386af5ee78 Assembly-CSharp.dll:.LanguageController
+4824615318f8171e079ab4792c1fa39b Assembly-CSharp.dll:.LanguageController
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -164,7 +166,7 @@ e7cecaedb57da7aa2da2ecf128a29c40 Assembly-UnityScript.dll:.GA_FREE_JS_Demo04
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GE_OrbitCameraUI
 e7cecaedb57da7aa2da2ecf128a29c40 Assembly-UnityScript.dll:.GA_FREE_JS_Demo03
 e1b523733e31491ecb16527c7582e72c Assembly-CSharp.dll:.GA_FREE_Demo01
-2a390c5d7c3e672e8ed47369eef25a25 Assembly-CSharp.dll:.MainMenuButtonsScript
+5b096e47d3f22d514317ad2dad297387 Assembly-CSharp.dll:.MainMenuButtonsScript
 7cbff8c317263ec22380fc125149ffed GUIAnimatorFREE.dll:.GUIAnimFREE
 d2e582a591d4af7c025408cacf0064d9 GUIAnimatorFREE.dll:.GUIAnimSystemFREE
 e16741e25fc2f13c6e39c95d67c29ac4 Assembly-CSharp.dll:.GA_FREE_Demo02
@@ -174,4 +176,4 @@ e7cecaedb57da7aa2da2ecf128a29c40 Assembly-CSharp.dll:.GA_FREE_Demo03
 e1b523733e31491ecb16527c7582e72c Assembly-UnityScript.dll:.GA_FREE_JS_Demo01
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.CloudMover
 42057599834e76900d0987379e4fa2cd Assembly-CSharp.dll:.GA_FREE_Demo06
-650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.tesText
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ActionScript
