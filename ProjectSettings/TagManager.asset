@@ -11,6 +11,8 @@ TagManager:
   - poo
   - DirectionalLight
   - MainMenu
+  - coin
+  - MiniGameController
   layers:
   - Default
   - TransparentFX

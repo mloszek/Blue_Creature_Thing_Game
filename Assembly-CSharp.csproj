@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\ActionScript.cs" />
      <Compile Include="Assets\Scripts\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\CloudMover.cs" />
+     <Compile Include="Assets\Scripts\coinDropper.cs" />
      <Compile Include="Assets\Scripts\CreatureController.cs" />
      <Compile Include="Assets\Scripts\englishLanguage.cs" />
      <Compile Include="Assets\Scripts\Fader.cs" />
@@ -78,8 +79,10 @@
      <Compile Include="Assets\Scripts\LanguageController.cs" />
      <Compile Include="Assets\Scripts\LinksController.cs" />
      <Compile Include="Assets\Scripts\MainMenuButtonsScript.cs" />
+     <Compile Include="Assets\Scripts\MiniGameController.cs" />
      <Compile Include="Assets\Scripts\polishLanguage.cs" />
      <Compile Include="Assets\Scripts\Shaker.cs" />
+     <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\statsPanelScript.cs" />
      <Compile Include="Assets\Scripts\tesText.cs" />
      <None Include="Assets\2D Sky FREE\Demo\Scripts\Note.txt" />
