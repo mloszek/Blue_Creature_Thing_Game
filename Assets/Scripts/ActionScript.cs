@@ -4,80 +4,97 @@ using UnityEngine;
 
 public class ActionScript : MonoBehaviour
 {
+	public GameObject minigame;
+	private GameObject creature;
+
+	void Start ()
+	{
+		creature = GameObject.FindWithTag ("Creature");
+	}
 
 	public void giveMedicine ()
 	{
-		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isAsleep == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isDead == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getLevel() > 0) {
-			if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isSick == true) {
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().medicineSource.Play ();
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSickness (false);
+		if (creature.GetComponent<CreatureController> ().isAsleep == false
+		    && creature.GetComponent<CreatureController> ().isDead == false
+		    && creature.GetComponent<CreatureController> ().getLevel () > 0) {
+			if (creature.GetComponent<CreatureController> ().isSick == true) {
+				creature.GetComponent<CreatureController> ().medicineSource.Play ();
+				creature.GetComponent<CreatureController> ().setSickness (false);
 				Destroy (GameObject.FindWithTag ("skull"));
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().resetSickTimer ();
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
+				creature.GetComponent<CreatureController> ().resetSickTimer ();
+				creature.GetComponent<CreatureController> ().startTimer ();
 			}
 		}
 	}
 
 	public void cleanPoop ()
 	{
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setPoop (0);
+		creature.GetComponent<CreatureController> ().setPoop (0);
 		GameObject[] poo = GameObject.FindGameObjectsWithTag ("poo");
 		if (poo.Length != 0) {
 			foreach (GameObject poop in poo) {
 				Destroy (poop);
 			}
-			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().brushSource.Play ();
+			creature.GetComponent<CreatureController> ().brushSource.Play ();
 		}
 	}
 
 	public void feed ()
 	{
-		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isAsleep == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isDead == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getLevel() > 0) {
-			if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == true) {
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setHunger (0);
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
-			} else if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == false &&
-			          GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () >= 20f) {
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setHunger (0);
-			} else if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isHungry == false &&
-			           GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getHunger () < 20f)
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().makeSick ();
+		if (creature.GetComponent<CreatureController> ().isAsleep == false
+		    && creature.GetComponent<CreatureController> ().isDead == false
+		    && creature.GetComponent<CreatureController> ().getLevel () > 0) {
+			if (creature.GetComponent<CreatureController> ().isHungry == true) {
+				creature.GetComponent<CreatureController> ().setHunger (0);
+				creature.GetComponent<CreatureController> ().startTimer ();
+			} else if (creature.GetComponent<CreatureController> ().isHungry == false &&
+			           creature.GetComponent<CreatureController> ().getHunger () >= 20f) {
+				creature.GetComponent<CreatureController> ().setHunger (0);
+			} else if (creature.GetComponent<CreatureController> ().isHungry == false &&
+			           creature.GetComponent<CreatureController> ().getHunger () < 20f)
+				creature.GetComponent<CreatureController> ().makeSick ();
 		}
 		
 	}
 
 	public void entertain ()
 	{
-		if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isAsleep == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isDead == false 
-			&& GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().getLevel() > 0) {
-			if (GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isBored == true) {
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().medicineSource.Play ();
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setBoredom (0);
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().startTimer ();
-			} else {
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setBoredom (0);
-				GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().medicineSource.Play ();
+		if (creature.GetComponent<CreatureController> ().isAsleep == false
+		    && creature.GetComponent<CreatureController> ().isDead == false
+		    && creature.GetComponent<CreatureController> ().getLevel () > 0) {
+			creature.GetComponent<CreatureController> ().setBoredom (0);
+			creature.transform.position = new Vector3 (0, 0, 2f);
+			if (GameObject.FindWithTag ("skull") != null) 
+			{
+				GameObject.FindWithTag ("skull").transform.position = new Vector3 (0, 2.22f, 2f);
 			}
+			GameObject[] poo = GameObject.FindGameObjectsWithTag ("poo");
+			if (poo != null) 
+			{
+				foreach (GameObject poop in poo) {
+					poop.transform.position = new Vector3 (0, -1.6f, 2f);
+				}
+			}
+			GameObject.FindWithTag ("IngameCanvas").SetActive (false);
+			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isMinigameRunning = true;
+			minigame.SetActive (true);
+			minigame.GetComponent<MiniGameController> ().beginGame ();
 		}
 	}
 
+
 	public void killSwitch ()
 	{
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().kill ();
+		creature.GetComponent<CreatureController> ().kill ();
 	}
 
 	public void putToSleep ()
 	{
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().makeSleep ();
+		creature.GetComponent<CreatureController> ().makeSleep ();
 	}
 
 	public void wakeUp ()
 	{
-		GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().wakeUp ();
+		creature.GetComponent<CreatureController> ().wakeUp ();
 	}
 }

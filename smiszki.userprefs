@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\coinDropper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CreatureController.cs">
     <Files>
-      <File FileName="Assets\Scripts\coinDropper.cs" Line="41" Column="3" />
-      <File FileName="Assets\Scripts\MiniGameController.cs" Line="36" Column="63" />
-      <File FileName="Assets\Scripts\CreatureController.cs" Line="42" Column="47" />
-      <File FileName="Assets\Scripts\CloudMover.cs" Line="12" Column="3" />
+      <File FileName="Assets\Scripts\MiniGameController.cs" Line="118" Column="22" />
+      <File FileName="Assets\Scripts\coinDropper.cs" Line="32" Column="101" />
+      <File FileName="Assets\Scripts\ScoreController.cs" Line="17" Column="19" />
+      <File FileName="Assets\Scripts\tesText.cs" Line="16" Column="32" />
+      <File FileName="Assets\Scripts\CreatureController.cs" Line="151" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

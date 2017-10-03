@@ -13,6 +13,11 @@ TagManager:
   - MainMenu
   - coin
   - MiniGameController
+  - xMark
+  - dropCollider
+  - backButton
+  - IngameCanvas
+  - scoreText
   layers:
   - Default
   - TransparentFX

@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\MainMenuButtonsScript.cs" />
      <Compile Include="Assets\Scripts\MiniGameController.cs" />
      <Compile Include="Assets\Scripts\polishLanguage.cs" />
+     <Compile Include="Assets\Scripts\ScoreController.cs" />
      <Compile Include="Assets\Scripts\Shaker.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\statsPanelScript.cs" />

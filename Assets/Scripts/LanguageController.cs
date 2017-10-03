@@ -21,6 +21,7 @@ public class LanguageController : MonoBehaviour {
 	public Text comfortText;
 	public Text happyText;
 	public Text hungerText;
+	public Text hideMiniGame;
 
 	private string[][] languages = new string[2][];
 	private int index = 0;
@@ -96,5 +97,6 @@ public class LanguageController : MonoBehaviour {
 		comfortText.text = languages [index] [13];
 		happyText.text = languages [index] [14];
 		hungerText.text = languages [index] [15];
+		hideMiniGame.text = languages [index] [10];
 	}
 }

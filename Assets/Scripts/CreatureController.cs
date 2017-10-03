@@ -32,13 +32,16 @@ public class CreatureController : MonoBehaviour
 	public bool isHungry = false;
 	public bool isBored = false;
 	public bool isAsleep = false;
+	public bool isMinigameRunning = false;
 
 	private tesText text;
 
 	System.Diagnostics.Stopwatch timer;
 
-	void Awake ()
+	void Start ()
 	{
+		setSourceVolume (GameObject.FindWithTag ("Player").GetComponent<tesText> ().getVolume());
+
 		timer = new System.Diagnostics.Stopwatch ();
 		timer.Start ();
 
@@ -71,7 +74,7 @@ public class CreatureController : MonoBehaviour
 	public void setHunger (float newValue)
 	{
 		hunger = newValue;	
-		if(isHungry){
+		if (isHungry) {
 			animator.SetTrigger ("idle");
 			isHungry = false;
 		}
@@ -85,11 +88,11 @@ public class CreatureController : MonoBehaviour
 
 	public void setBoredom (float newValue)
 	{
-		
 		boredom = newValue;	
 		if (isBored) {
 			animator.SetTrigger ("idle");
 			isBored = false;
+			timer.Start ();
 		}
 
 	}
@@ -138,15 +141,14 @@ public class CreatureController : MonoBehaviour
 
 	void Update ()
 	{
-		
 		text.setText (timer.Elapsed);
 //		text.setText (poopPressure);
 
 		if (isDead) {
 			return;
-		} else if (!isAsleep) {
+		} else if (!isAsleep && !isMinigameRunning) {
 			if (level == 0) {
-				if (timer.Elapsed.Minutes >= 1) {
+				if (timer.Elapsed.Minutes >= 2) {
 					animator.SetTrigger ("evolve");
 					evolveSource.Play ();
 					level = level + 1;
@@ -155,13 +157,13 @@ public class CreatureController : MonoBehaviour
 				}
 			} else if (level > 0) {
 			
-				if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				if (level == 1 && timer.Elapsed.Minutes >= 8) {
 					animator.SetTrigger ("evolve");
 					evolveSource.Play ();
 					level = level + 1;
 					timer.Reset ();
 					timer.Start ();
-				} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				} else if (level == 1 && timer.Elapsed.Minutes >= 8) {
 					if (happiness >= 50) {
 						animator.SetTrigger ("evolveGood");
 						evolveSource.Play ();
@@ -175,7 +177,7 @@ public class CreatureController : MonoBehaviour
 						timer.Reset ();
 						timer.Start ();
 					}
-				} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				} else if (level == 1 && timer.Elapsed.Minutes >= 8) {
 					if (happiness >= 50) {
 						animator.SetTrigger ("evolveGood");
 						evolveSource.Play ();
@@ -189,7 +191,7 @@ public class CreatureController : MonoBehaviour
 						timer.Reset ();
 						timer.Start ();
 					}
-				} else if (level == 1 && timer.Elapsed.Minutes >= 15) {
+				} else if (level == 1 && timer.Elapsed.Minutes >= 10) {
 					animator.SetTrigger ("goToHeaven");
 					heavenSource.Play ();
 					isDead = true;
@@ -271,11 +273,10 @@ public class CreatureController : MonoBehaviour
 		if (poopCounter < 3) {
 			poopSource.Play ();
 			poopCounter += 1;
-			if (GameObject.FindWithTag ("MainMenu").activeSelf == true) {
+			if (GameObject.FindGameObjectWithTag("MainMenu") == null)
+			Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, -3f), Quaternion.identity);
+			else
 				Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, 2f), Quaternion.identity);
-			} else {
-				Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, -3f), Quaternion.identity);
-			}
 		} else if (isSick == false) {
 			makeSick ();
 		}
@@ -321,6 +322,12 @@ public class CreatureController : MonoBehaviour
 			wakeUpSource.Play ();
 			GameObject.FindWithTag ("DirectionalLight").GetComponent<Light> ().intensity = 1f;
 		}
+	}
+
+	public void playMinigame()
+	{
+		GameObject.FindWithTag ("MiniGameController").SetActive (true);
+		timer.Stop ();
 	}
 
 	//	void OnApplicationPause (bool pauseStatus)
