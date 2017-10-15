@@ -148,7 +148,7 @@ public class CreatureController : MonoBehaviour
 			return;
 		} else if (!isAsleep && !isMinigameRunning) {
 			if (level == 0) {
-				if (timer.Elapsed.Minutes >= 2) {
+				if (timer.Elapsed.Minutes >= 0) {
 					animator.SetTrigger ("evolve");
 					evolveSource.Play ();
 					level = level + 1;

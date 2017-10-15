@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ActionScript : MonoBehaviour
 {
+	public GameObject text;
 	public GameObject minigame;
+	public GameObject minigameCanvas;
+
 	private GameObject creature;
 
 	void Start ()
@@ -76,8 +79,10 @@ public class ActionScript : MonoBehaviour
 				}
 			}
 			GameObject.FindWithTag ("IngameCanvas").SetActive (false);
+			minigameCanvas.SetActive (true);
 			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().isMinigameRunning = true;
 			minigame.SetActive (true);
+			text.GetComponent<ScoreController> ().resetScore ();
 			minigame.GetComponent<MiniGameController> ().beginGame ();
 		}
 	}

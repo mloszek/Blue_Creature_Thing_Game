@@ -11,6 +11,8 @@ public class MiniGameController : MonoBehaviour
 	public GameObject dropCollider;
 	public GameObject backButton;
 	public GameObject ingameCanvas;
+	public GameObject miniGameCanvas;
+	public GameObject scoreText;
 	public AudioSource source;
 	public AudioClip arriveSound;
 	public AudioClip gameOver;
@@ -34,7 +36,7 @@ public class MiniGameController : MonoBehaviour
 		dropCollider.SetActive (true);
 		backButton.SetActive (false);
 		minigameTimer = new System.Diagnostics.Stopwatch ();
-		GameObject.FindWithTag ("scoreText").GetComponent<ScoreController> ().resetScore ();
+		scoreText.GetComponent<ScoreController> ().resetScore ();
 		game = SpawnCoins ();
 		StartCoroutine (game);
 	}
@@ -88,6 +90,7 @@ public class MiniGameController : MonoBehaviour
 		
 		clearMarks ();
 		ingameCanvas.SetActive (true);
+		miniGameCanvas.SetActive (false);
 		GameObject.FindWithTag ("Creature").transform.position = new Vector3 (0, 0, 0);
 		if (GameObject.FindWithTag ("skull") != null) 
 		{

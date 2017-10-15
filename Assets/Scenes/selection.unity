@@ -261,6 +261,8 @@ MonoBehaviour:
   dropCollider: {fileID: 120375751}
   backButton: {fileID: 2057180673}
   ingameCanvas: {fileID: 1955526010}
+  miniGameCanvas: {fileID: 1306988286}
+  scoreText: {fileID: 956435157}
   source: {fileID: 65056454}
   arriveSound: {fileID: 8300000, guid: 89883c5c7d97643c79378d29523584d0, type: 3}
   gameOver: {fileID: 8300000, guid: 824181355b0644ada8f340dc2f147176, type: 3}
@@ -3205,7 +3207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7528bfcf78c45b248aaae8d058cb7ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 956435157}
   minigame: {fileID: 65056448}
+  minigameCanvas: {fileID: 1306988286}
 --- !u!1 &925833033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,7 +3354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: score Text
 --- !u!222 &956435160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4540,7 +4544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306988287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5260,7 +5264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7528bfcf78c45b248aaae8d058cb7ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
   minigame: {fileID: 65056448}
+  minigameCanvas: {fileID: 0}
 --- !u!82 &1509598898
 AudioSource:
   m_ObjectHideFlags: 0
