@@ -25,7 +25,6 @@ public class CreatureController : MonoBehaviour
 	private float hunger = 0f;
 	private float poopPressure = 0f;
 	private float boredom = 0f;
-	private float sleepTime = 0f;
 
 	public bool isSick = false;
 	public bool isDead = false;
@@ -40,7 +39,7 @@ public class CreatureController : MonoBehaviour
 
 	void Start ()
 	{
-		setSourceVolume (GameObject.FindWithTag ("Player").GetComponent<tesText> ().getVolume());
+		setSourceVolume (GameObject.FindWithTag ("Player").GetComponent<tesText> ().getVolume ());
 
 		timer = new System.Diagnostics.Stopwatch ();
 		timer.Start ();
@@ -139,7 +138,7 @@ public class CreatureController : MonoBehaviour
 	}
 
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		text.setText (timer.Elapsed);
 //		text.setText (poopPressure);
@@ -148,7 +147,7 @@ public class CreatureController : MonoBehaviour
 			return;
 		} else if (!isAsleep && !isMinigameRunning) {
 			if (level == 0) {
-				if (timer.Elapsed.Minutes >= 2) {
+				if (timer.Elapsed.Minutes >= 0) {
 					animator.SetTrigger ("evolve");
 					evolveSource.Play ();
 					level = level + 1;
@@ -235,13 +234,10 @@ public class CreatureController : MonoBehaviour
 			}
 		}
 
-		if (isAsleep) {
-			if (sleepTime < 100f) {
-				sleepTime += 0.001f;
-				if (happiness < 100f)
-					happiness += 0.001f;
-			} else
-				wakeUp ();
+		if (!isAsleep && (System.DateTime.Now.Hour > 21 || System.DateTime.Now.Hour < 8)) {
+			makeSleep ();
+		} else if (isAsleep && (System.DateTime.Now.Hour > 7 && System.DateTime.Now.Hour < 22)){
+			wakeUp ();
 		}
 			
 		if (happiness <= 0 || deathSickTimer <= 0 || hunger >= 100) {
@@ -273,8 +269,8 @@ public class CreatureController : MonoBehaviour
 		if (poopCounter < 3) {
 			poopSource.Play ();
 			poopCounter += 1;
-			if (GameObject.FindGameObjectWithTag("MainMenu") == null)
-			Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, -3f), Quaternion.identity);
+			if (GameObject.FindGameObjectWithTag ("MainMenu") == null)
+				Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, -3f), Quaternion.identity);
 			else
 				Instantiate (poop, new Vector3 (Random.Range (-2f, 2f), -1.6f, 2f), Quaternion.identity);
 		} else if (isSick == false) {
@@ -316,7 +312,6 @@ public class CreatureController : MonoBehaviour
 	{
 		if (isAsleep) {
 			isAsleep = false;
-			sleepTime = 0f;
 			timer.Start ();
 			animator.SetTrigger ("idle");
 			wakeUpSource.Play ();
@@ -324,7 +319,7 @@ public class CreatureController : MonoBehaviour
 		}
 	}
 
-	public void playMinigame()
+	public void playMinigame ()
 	{
 		GameObject.FindWithTag ("MiniGameController").SetActive (true);
 		timer.Stop ();

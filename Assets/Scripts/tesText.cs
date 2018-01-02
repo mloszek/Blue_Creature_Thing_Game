@@ -25,7 +25,6 @@ public class tesText : MonoBehaviour {
 
 	public void setVolume(float newValue)
 	{
-//		Debug.Log ("volume set!");
 		volume = newValue;
 	}
 

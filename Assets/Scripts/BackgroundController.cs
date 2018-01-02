@@ -9,6 +9,8 @@ public class BackgroundController : MonoBehaviour {
 	public Texture onNight;
 	public new Renderer renderer;
 
+	private int hour;
+
 	void Update () {
 		
 		checkHour ();
@@ -16,11 +18,11 @@ public class BackgroundController : MonoBehaviour {
 
 	void checkHour(){
 	
-		int hour = System.DateTime.Now.Hour;
+		hour = System.DateTime.Now.Hour;
 
 		if (hour >= 8 && hour < 16) {
 			renderer.material.SetTexture ("_MainTex", onDay);
-		} else if (hour >= 16 && hour < 21) {
+		} else if (hour >= 16 && hour < 22) {
 			renderer.material.SetTexture ("_MainTex", onEvening);
 		} else {
 			renderer.material.SetTexture ("_MainTex", onNight);
