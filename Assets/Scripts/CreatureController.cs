@@ -140,7 +140,7 @@ public class CreatureController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		text.setText (timer.Elapsed);
+//		text.setText (timer.Elapsed);
 //		text.setText (poopPressure);
 
 		if (isDead) {
