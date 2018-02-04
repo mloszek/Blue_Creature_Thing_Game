@@ -147,7 +147,7 @@ public class CreatureController : MonoBehaviour
 			return;
 		} else if (!isAsleep && !isMinigameRunning) {
 			if (level == 0) {
-				if (timer.Elapsed.Minutes >= 0) {
+				if (timer.Elapsed.Minutes >= 1) {
 					animator.SetTrigger ("evolve");
 					evolveSource.Play ();
 					level = level + 1;
@@ -247,12 +247,14 @@ public class CreatureController : MonoBehaviour
 
 	public void kill ()
 	{
-		animator.SetTrigger ("dead");
-		deadSource.Play ();
-		if (GameObject.FindWithTag ("skull") != null) {
-			Destroy (GameObject.FindWithTag ("skull"));
+		if (level > 0) {
+			animator.SetTrigger ("dead");
+			deadSource.Play ();
+			if (GameObject.FindWithTag ("skull") != null) {
+				Destroy (GameObject.FindWithTag ("skull"));
+			}
+			isDead = true;
 		}
-		isDead = true;
 	}
 
 	public void goToHeaven ()
