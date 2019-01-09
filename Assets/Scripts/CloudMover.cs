@@ -4,16 +4,46 @@ using UnityEngine;
 
 public class CloudMover : MonoBehaviour {
 
-    public float speed;
-    
-    void FixedUpdate ()
-    {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-	}
+    [SerializeField]
+    private List<GameObject> clouds;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private Coroutine cloudMovingCoroutine;
+
+    public float moveInterval = 0.1f;
+    public Vector3 fastCloud = new Vector3(0.2f, 0, 0);
+    public Vector3 slowCloud = new Vector3(0.1f, 0, 0);
+
+    private void Start()
     {
-        if (collision.tag == "background")
-        Destroy(gameObject);
+        if (cloudMovingCoroutine != null)
+        {
+            StopCoroutine(cloudMovingCoroutine);
+            cloudMovingCoroutine = null;
+        }
+        cloudMovingCoroutine = StartCoroutine(MoveClouds());
+    }
+
+    private IEnumerator MoveClouds()
+    {
+        yield return new WaitForSeconds(moveInterval);
+
+        for (int i = 0; i < clouds.Count; i++)
+        {
+            if (i == 2 || i == 3)
+                clouds[i].transform.position += fastCloud;
+            else
+                clouds[i].transform.position += slowCloud;
+        }
+
+        cloudMovingCoroutine = StartCoroutine(MoveClouds());
+    }
+
+    private void OnDisable()
+    {
+        if (cloudMovingCoroutine != null)
+        {
+            StopCoroutine(cloudMovingCoroutine);
+            cloudMovingCoroutine = null;
+        }
     }
 }

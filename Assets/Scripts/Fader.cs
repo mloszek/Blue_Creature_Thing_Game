@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
-
-	public Button button1;
-	public Button button2;
-	public Button button3;
+	[SerializeField] private Button button1;
+	[SerializeField] private Button button2;
 	private CanvasGroup canvasGroup;
 	private float elapsedTime = 0;
 	private float fadeInTime = 0.5f;
@@ -32,9 +30,6 @@ public class Fader : MonoBehaviour
 	{
 		button1.interactable = false;
 		button2.interactable = false;
-		if (button3 != null) {
-			button3.interactable = false;
-		}
 		StartCoroutine (DoFadeOut ());
 	}
 
