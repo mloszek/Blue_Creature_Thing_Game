@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 683692575}
   - component: {fileID: 683692577}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: IntroController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clouds: {fileID: 1104595704227396, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
-  spawnWait: 46.2
+  spawnWait: 46
   startWait: 26.6
   spawnPosition: {x: -18, y: 0}
   source: {fileID: 683692577}
@@ -333,7 +333,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &683692577
 AudioSource:
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1005321418}
   - component: {fileID: 1005321421}
   m_Layer: 5
-  m_Name: button2
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112637737}
   m_Layer: 5
-  m_Name: buttonsPivot
+  m_Name: ButtonsPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,11 +715,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126491845}
+  - component: {fileID: 1126491846}
   - component: {fileID: 1126491844}
   - component: {fileID: 1126491847}
   - component: {fileID: 1126491843}
   - component: {fileID: 1126491842}
-  - component: {fileID: 1126491846}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 960}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0.7
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -800,7 +800,7 @@ RectTransform:
   m_Children:
   - {fileID: 1112637737}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -821,6 +821,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button1: {fileID: 1207967383}
   button2: {fileID: 1005321418}
+  canvasGroup: {fileID: 1126491847}
+  fadeInTime: 0.5
+  fadeOutTime: 1
 --- !u!225 &1126491847
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -848,7 +851,7 @@ GameObject:
   - component: {fileID: 1207967383}
   - component: {fileID: 1207967387}
   m_Layer: 5
-  m_Name: button
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1199,7 +1202,7 @@ Transform:
   - {fileID: 583310495}
   - {fileID: 1398332992}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398332991
 GameObject:
@@ -1321,7 +1324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669426777071318, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4669426777071318, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1334,6 +1337,110 @@ PrefabInstance:
     - target: {fileID: 4669426777071318, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608218915272000, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410256845982524, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176539398031990, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975327548032162, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1476047279290866, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190596659992926, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058695951802920, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916068266294518, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808323202957798, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851821987648848, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548978297927686, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111054147599024, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960161871634938, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978196158136916, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587176194764948, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319836886766748, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675237332502804, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847472371152382, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548227980945706, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675730797972176, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657135617931088, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064439424934750, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088954873554896, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049659113213482, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030659717224360, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413777066763216, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
+      propertyPath: m_Name
+      value: Cloud
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f970c0cb4b4054793c9ba1bc63c3e8, type: 3}
@@ -1403,7 +1510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1495,7 +1602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092131297
 GameObject:

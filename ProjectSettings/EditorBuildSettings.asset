@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/chmurki.unity
     guid: 2a92889083020be40906d009a7d51f9f
   - enabled: 1
-    path: Assets/Scenes/selection.unity
+    path: Assets/Scenes/SelectionScene.unity
     guid: 625f4213e17b25d499a0ba788065a410
+  m_configObjects: {}
