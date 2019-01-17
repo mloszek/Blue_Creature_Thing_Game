@@ -12,30 +12,12 @@ public class IntroController : MonoBehaviour
 
     private Coroutine spawnCloudsCoroutine;
 
-    private static IntroController instance;
-
-    public static IntroController Get()
-    {
-        return instance;
-    }
-
-    public void GetNumber()
-    {
-        instance.gameObject.SetActive(false);
-    }
-
     void Start()
     {
-        instance = this;
         Application.runInBackground = true;
         source.Play();
 
-        if (spawnCloudsCoroutine != null)
-        {
-            StopCoroutine(spawnCloudsCoroutine);
-            spawnCloudsCoroutine = null;
-        }
-        spawnCloudsCoroutine = StartCoroutine(SpawnClouds());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(spawnCloudsCoroutine, SpawnClouds());
     }
 
     private IEnumerator SpawnClouds()
@@ -51,12 +33,6 @@ public class IntroController : MonoBehaviour
 
     private void OnDisable()
     {
-        instance = null;
-
-        if (spawnCloudsCoroutine != null)
-        {
-            StopCoroutine(spawnCloudsCoroutine);
-            spawnCloudsCoroutine = null;
-        }
+        CoroutinesHandler.Get().KillCoroutine(spawnCloudsCoroutine);
     }
 }

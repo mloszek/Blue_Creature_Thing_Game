@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
+    [SerializeField] private IntroController introController;
     [SerializeField] private Button button1;
     [SerializeField] private Button button2;
     [SerializeField] private CanvasGroup canvasGroup;
@@ -26,12 +27,7 @@ public class Fader : MonoBehaviour
 
     void Start()
     {
-        if (fadeInCoroutine != null)
-        {
-            StopCoroutine(fadeInCoroutine);
-            fadeInCoroutine = null;
-        }
-        fadeInCoroutine = StartCoroutine(DoFadeIn());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(fadeInCoroutine, DoFadeIn());
     }
 
     public void FadeOut()
@@ -39,17 +35,13 @@ public class Fader : MonoBehaviour
         button1.interactable = false;
         button2.interactable = false;
 
-        if (fadeInCoroutine != null)
-        {
-            StopCoroutine(fadeInCoroutine);
-        }
-        fadeInCoroutine = null;
+        CoroutinesHandler.Get().KillCoroutine(fadeInCoroutine);
 
         if (fadeOutCoroutine != null)
         {
             return;
         }
-        fadeOutCoroutine = StartCoroutine(DoFadeOut());
+        CoroutinesHandler.Get().RunCoroutine(fadeOutCoroutine, DoFadeOut());
     }
 
     private IEnumerator DoFadeIn()
@@ -69,7 +61,7 @@ public class Fader : MonoBehaviour
     {
         elapsedTime = 0;
 
-        musicSource = IntroController.Get().GetComponent<AudioSource>();
+        musicSource = introController.GetComponent<AudioSource>();
         var isMusicSourceNull = musicSource == null ? true : false;
 
         while (canvasGroup.alpha > 0 && !isMusicSourceNull)
@@ -86,8 +78,11 @@ public class Fader : MonoBehaviour
 
     private void OnDisable()
     {
-        StopAllCoroutines();
-        fadeInCoroutine = null;
-        fadeOutCoroutine = null;
+        Coroutine[] coroutinesToKill =
+        {
+            fadeInCoroutine,
+            fadeOutCoroutine
+        };
+        CoroutinesHandler.Get().KillGivenCoroutines(coroutinesToKill);
     }
 }

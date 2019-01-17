@@ -511,7 +511,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1857665725}
+      - m_Target: {fileID: 1126491848}
         m_MethodName: ManageCredits
         m_Mode: 1
         m_Arguments:
@@ -716,6 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126491845}
   - component: {fileID: 1126491846}
+  - component: {fileID: 1126491848}
   - component: {fileID: 1126491844}
   - component: {fileID: 1126491847}
   - component: {fileID: 1126491843}
@@ -819,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd1e9027a7618242aaa6559c1a255e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introController: {fileID: 683692575}
   button1: {fileID: 1207967383}
   button2: {fileID: 1005321418}
   canvasGroup: {fileID: 1126491847}
@@ -836,6 +838,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
+--- !u!114 &1126491848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126491841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d3f18cd23d2ba4490f3c977e1f5745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1857665726}
+  button: {fileID: 1207967383}
 --- !u!1 &1207967381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1471,6 @@ GameObject:
   - component: {fileID: 1857665724}
   - component: {fileID: 1857665727}
   - component: {fileID: 1857665726}
-  - component: {fileID: 1857665725}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1482,20 +1497,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1857665725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857665723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d3f18cd23d2ba4490f3c977e1f5745, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1857665726}
-  button: {fileID: 1207967383}
 --- !u!114 &1857665726
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,12 +35,7 @@ public class LinksController : MonoBehaviour
     private void ShowCredits()
     {
         button.interactable = false;
-        if (moveOutOfScreenCoroutine != null)
-        {
-            StopCoroutine(moveOutOfScreenCoroutine);
-            moveOutOfScreenCoroutine = null;
-        }
-        moveOutOfScreenCoroutine = StartCoroutine(MoveOutOfScreen());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(moveOutOfScreenCoroutine, MoveOutOfScreen());
         text.text = creditText;
         isShown = true;
     }
@@ -53,19 +48,14 @@ public class LinksController : MonoBehaviour
 
         if (button.transform.position.y > positionWhenCredits.y)
         {
-            moveOutOfScreenCoroutine = StartCoroutine(MoveOutOfScreen());
+            CoroutinesHandler.Get().RunCoroutineWithCheck(moveOutOfScreenCoroutine, MoveOutOfScreen());
         }
     }
 
     private void HideCredits()
     {
         button.interactable = true;
-        if (moveOutOfScreenCoroutine != null)
-        {
-            StopCoroutine(moveOutOfScreenCoroutine);
-            moveOutOfScreenCoroutine = null;
-        }
-        moveOutOfScreenCoroutine = null;
+        CoroutinesHandler.Get().KillCoroutine(moveOutOfScreenCoroutine);
         button.transform.position = zeroPosition;
         text.text = "";
         isShown = false;
@@ -73,10 +63,6 @@ public class LinksController : MonoBehaviour
 
     private void OnDisable()
     {
-        if (moveOutOfScreenCoroutine != null)
-        {
-            StopCoroutine(moveOutOfScreenCoroutine);
-            moveOutOfScreenCoroutine = null;
-        }
+        CoroutinesHandler.Get().KillCoroutine(moveOutOfScreenCoroutine);
     }
 }
