@@ -12,7 +12,7 @@ public class LinksController : MonoBehaviour
     private Vector3 positionWhenCredits;
     private bool isShown = false;
 
-    private Coroutine moveOutOfScreenCoroutine;
+    private Coroutine moveOutOfScreenCoroutine = null;
     private Vector3 moveVector = new Vector3(0, 10f, 0);
 
     private const string creditText = "by lohu";
@@ -35,21 +35,21 @@ public class LinksController : MonoBehaviour
     private void ShowCredits()
     {
         button.interactable = false;
-        CoroutinesHandler.Get().RunCoroutineWithCheck(moveOutOfScreenCoroutine, MoveOutOfScreen());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref moveOutOfScreenCoroutine, MoveOutOfScreen());
         text.text = creditText;
         isShown = true;
     }
 
     private IEnumerator MoveOutOfScreen()
     {
-        yield return new WaitForSeconds(0);
+        yield return null;
 
         button.transform.position -= moveVector;
 
         if (button.transform.position.y > positionWhenCredits.y)
         {
-            CoroutinesHandler.Get().RunCoroutineWithCheck(moveOutOfScreenCoroutine, MoveOutOfScreen());
-        }
+            CoroutinesHandler.Get().RunCoroutineWithCheck(ref moveOutOfScreenCoroutine, MoveOutOfScreen());
+        }        
     }
 
     private void HideCredits()
@@ -63,6 +63,9 @@ public class LinksController : MonoBehaviour
 
     private void OnDisable()
     {
-        CoroutinesHandler.Get().KillCoroutine(moveOutOfScreenCoroutine);
+        CoroutinesHandler coroutinesHandler = CoroutinesHandler.Get();
+
+        if (coroutinesHandler != null)
+            coroutinesHandler.KillCoroutine(moveOutOfScreenCoroutine);
     }
 }

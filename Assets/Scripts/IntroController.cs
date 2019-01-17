@@ -10,20 +10,21 @@ public class IntroController : MonoBehaviour
     [SerializeField] private Vector2 spawnPosition;
     [SerializeField] private AudioSource source;
 
-    private Coroutine spawnCloudsCoroutine;
+    private Coroutine spawnCloudsCoroutine = null;
+    private bool isShuttingDown = false;
 
     void Start()
     {
         Application.runInBackground = true;
         source.Play();
 
-        CoroutinesHandler.Get().RunCoroutineWithCheck(spawnCloudsCoroutine, SpawnClouds());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref spawnCloudsCoroutine, SpawnClouds());
     }
 
     private IEnumerator SpawnClouds()
     {
         yield return new WaitForSeconds(startWait);
-        while (true)
+        while (!isShuttingDown) 
         {
             Quaternion spawnRotation = Quaternion.identity;
             Instantiate(clouds, spawnPosition, spawnRotation);
@@ -33,6 +34,10 @@ public class IntroController : MonoBehaviour
 
     private void OnDisable()
     {
-        CoroutinesHandler.Get().KillCoroutine(spawnCloudsCoroutine);
+        isShuttingDown = true;
+        CoroutinesHandler coroutinesHandler = CoroutinesHandler.Get();
+
+        if (coroutinesHandler != null)
+            coroutinesHandler.KillCoroutine(spawnCloudsCoroutine);
     }
 }

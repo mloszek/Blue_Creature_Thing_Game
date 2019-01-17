@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class CloudMover : MonoBehaviour
 {
+    [SerializeField] private Vector3 fastCloud = new Vector3(0.02f, 0, 0);
+    [SerializeField] private Vector3 slowCloud = new Vector3(0.01f, 0, 0);
+    [SerializeField] private List<GameObject> clouds; 
 
-    [SerializeField] private List<GameObject> clouds;
-
-    private Coroutine cloudMovingCoroutine;
+    private Coroutine cloudMovingCoroutine = null;
     private bool isShuttingDown = false;
-
-    public float moveInterval = 0.1f;
-    public Vector3 fastCloud = new Vector3(0.2f, 0, 0);
-    public Vector3 slowCloud = new Vector3(0.1f, 0, 0);
 
     private void Start()
     {
-        CoroutinesHandler.Get().RunCoroutineWithCheck(cloudMovingCoroutine, MoveClouds());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref cloudMovingCoroutine, MoveClouds());
     }
 
     private IEnumerator MoveClouds()
     {
-        yield return new WaitForSeconds(moveInterval);
+        yield return null;
 
         if (!isShuttingDown)
         {
@@ -33,13 +30,16 @@ public class CloudMover : MonoBehaviour
                     clouds[i].transform.position += slowCloud;
             }
 
-            CoroutinesHandler.Get().RunCoroutineWithCheck(cloudMovingCoroutine, MoveClouds());
-        }            
+            CoroutinesHandler.Get().RunCoroutineWithCheck(ref cloudMovingCoroutine, MoveClouds());
+        }
     }
 
     private void OnDisable()
     {
         isShuttingDown = true;
-        CoroutinesHandler.Get().KillCoroutine(cloudMovingCoroutine);
+        CoroutinesHandler coroutinesHandler = CoroutinesHandler.Get();
+
+        if (coroutinesHandler != null)
+            coroutinesHandler.KillCoroutine(cloudMovingCoroutine);
     }
 }

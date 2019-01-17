@@ -33,18 +33,18 @@ public class CreatureController : MonoBehaviour
 	public bool isAsleep = false;
 	public bool isMinigameRunning = false;
 
-	private tesText text;
+	private TesText text;
 
 	System.Diagnostics.Stopwatch timer;
 
 	void Start ()
 	{
-		setSourceVolume (GameObject.FindWithTag ("Player").GetComponent<tesText> ().getVolume ());
+		setSourceVolume (GameObject.FindWithTag ("Player").GetComponent<TesText> ().getVolume ());
 
 		timer = new System.Diagnostics.Stopwatch ();
 		timer.Start ();
 
-		text = GameObject.FindWithTag ("Player").GetComponent<tesText> ();
+		text = GameObject.FindWithTag ("Player").GetComponent<TesText> ();
 		text.setText (System.TimeSpan.Zero);
 
 		animator = GetComponent<Animator> ();

@@ -77,10 +77,8 @@
     <Compile Include="Assets\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_DemoPlaySound.cs" />
     <Compile Include="Assets\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_OpenOtherScene.cs" />
     <Compile Include="Assets\GUI Animator\GUI Animator FREE\Demo Basic (CSharp)\Scripts\GUIAnimatorFREEDemo.cs" />
-    <Compile Include="Assets\Scripts\ActionScript.cs" />
     <Compile Include="Assets\Scripts\BackgroundController.cs" />
     <Compile Include="Assets\Scripts\CloudMover.cs" />
-    <Compile Include="Assets\Scripts\coinDropper.cs" />
     <Compile Include="Assets\Scripts\CoroutinesHandler.cs" />
     <Compile Include="Assets\Scripts\CreatureController.cs" />
     <Compile Include="Assets\Scripts\DestroyAfter.cs" />
@@ -91,12 +89,11 @@
     <Compile Include="Assets\Scripts\LanguageController.cs" />
     <Compile Include="Assets\Scripts\LinksController.cs" />
     <Compile Include="Assets\Scripts\MainMenuButtonsScript.cs" />
-    <Compile Include="Assets\Scripts\MiniGameController.cs" />
     <Compile Include="Assets\Scripts\polishLanguage.cs" />
     <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\statsPanelScript.cs" />
-    <Compile Include="Assets\Scripts\tesText.cs" />
+    <Compile Include="Assets\Scripts\TesText.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\2D Sky FREE\Demo\Scripts\Note.txt" />

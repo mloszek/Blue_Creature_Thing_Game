@@ -11,7 +11,6 @@ public class IngameMenuScript : MonoBehaviour
 	public GameObject buttons;
 	public GameObject creature;
 	public GameObject statPanel;
-	public GameObject actionPanel;
 
 	public void showMenu ()
 	{
@@ -60,7 +59,6 @@ public class IngameMenuScript : MonoBehaviour
 	{
 		source.Play ();
 		buttons.SetActive (false);
-		actionPanel.SetActive (true);
 	}
 
 	public void hidePanel ()
@@ -68,7 +66,6 @@ public class IngameMenuScript : MonoBehaviour
 		source.Play ();
 		buttons.SetActive (true);
 		statPanel.SetActive (false);
-		actionPanel.SetActive (false);
 	}
 
 }

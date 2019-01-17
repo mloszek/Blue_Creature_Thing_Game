@@ -71,13 +71,13 @@ public class LanguageController : MonoBehaviour {
 
 		languages[0] = wordsEN;
 		languages [1] = wordsPL;
-		refreshWords ();
+		//refreshWords ();
 	}
 
 	public void switchLang (){
 
 		index = index == 0 ? 1 : 0;
-		refreshWords ();
+		//refreshWords ();
 	}
 
 	void refreshWords (){

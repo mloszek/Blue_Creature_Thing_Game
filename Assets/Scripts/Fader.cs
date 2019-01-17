@@ -16,8 +16,8 @@ public class Fader : MonoBehaviour
     private float elapsedTime = 0;
     private AudioSource musicSource;
 
-    private Coroutine fadeInCoroutine;
-    private Coroutine fadeOutCoroutine;
+    private Coroutine fadeInCoroutine = null;
+    private Coroutine fadeOutCoroutine = null;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class Fader : MonoBehaviour
 
     void Start()
     {
-        CoroutinesHandler.Get().RunCoroutineWithCheck(fadeInCoroutine, DoFadeIn());
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref fadeInCoroutine, DoFadeIn());
     }
 
     public void FadeOut()
@@ -83,6 +83,10 @@ public class Fader : MonoBehaviour
             fadeInCoroutine,
             fadeOutCoroutine
         };
-        CoroutinesHandler.Get().KillGivenCoroutines(coroutinesToKill);
+
+        CoroutinesHandler coroutinesHandler = CoroutinesHandler.Get();
+
+        if (coroutinesHandler != null)
+            coroutinesHandler.KillGivenCoroutines(coroutinesToKill);
     }
 }

@@ -20,7 +20,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 	public void begin ()
 	{
 		volume = 0.65f;
-		GameObject.FindWithTag ("Player").GetComponent<tesText> ().setVolume (volume);
+		GameObject.FindWithTag ("Player").GetComponent<TesText> ().setVolume (volume);
 		source.Play ();
 		canvas.SetActive (false);
 		ingameCanvas.SetActive (true);
@@ -65,7 +65,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 	public void changeVolume(float newValue)
 	{
 		source.volume = newValue;
-		GameObject.FindWithTag ("Player").GetComponent<tesText> ().setVolume (newValue);
+		GameObject.FindWithTag ("Player").GetComponent<TesText> ().setVolume (newValue);
 		if (GameObject.FindWithTag ("Creature") != null) {
 			GameObject.FindWithTag ("Creature").GetComponent<CreatureController> ().setSourceVolume (newValue);
 		}

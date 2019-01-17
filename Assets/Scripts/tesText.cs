@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class tesText : MonoBehaviour {
+public class TesText : MonoBehaviour {
 
 
 	public Text text;

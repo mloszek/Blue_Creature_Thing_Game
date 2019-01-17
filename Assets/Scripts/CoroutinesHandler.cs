@@ -36,7 +36,7 @@ public class CoroutinesHandler : MonoBehaviour
         coroutine = StartCoroutine(enumerator);
     }
 
-    public void RunCoroutineWithCheck(Coroutine coroutine, IEnumerator enumerator)
+    public void RunCoroutineWithCheck(ref Coroutine coroutine, IEnumerator enumerator)
     {
         if (coroutine != null)
         {
@@ -62,11 +62,6 @@ public class CoroutinesHandler : MonoBehaviour
     }
 
     private void OnApplicationQuit()
-    {
-        isShutingDown = true;
-    }
-
-    private void OnDisable()
     {
         isShutingDown = true;
     }

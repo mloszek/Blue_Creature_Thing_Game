@@ -2,30 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundController : MonoBehaviour {
+public class BackgroundController : MonoBehaviour
+{
 
-	public Texture onDay;
-	public Texture onEvening;
-	public Texture onNight;
-	public new Renderer renderer;
+    [SerializeField] private Texture onDay;
+    [SerializeField] private Texture onEvening;
+    [SerializeField] private Texture onNight;
+    [SerializeField] private MeshRenderer meshRenderer;
 
-	private int hour;
+    private int currentTime;
+    private Coroutine checkTimeCoroutine = null;
+    private const int refreshTimeCheckingInterval = 60;
 
-	void Update () {
-		
-		checkHour ();
-	}
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
-	void checkHour(){
-	
-		hour = System.DateTime.Now.Hour;
+    private void Start()
+    {
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref checkTimeCoroutine, CheckHour());
+    }
 
-		if (hour >= 8 && hour < 16) {
-			renderer.material.SetTexture ("_MainTex", onDay);
-		} else if (hour >= 16 && hour < 22) {
-			renderer.material.SetTexture ("_MainTex", onEvening);
-		} else {
-			renderer.material.SetTexture ("_MainTex", onNight);
-		}
-	}
+    private IEnumerator CheckHour()
+    {
+
+        currentTime = System.DateTime.Now.Hour;
+
+        if (currentTime >= 8 && currentTime < 16)
+        {
+            meshRenderer.material.SetTexture("_MainTex", onDay);
+        }
+        else if (currentTime >= 16 && currentTime < 22)
+        {
+            meshRenderer.material.SetTexture("_MainTex", onEvening);
+        }
+        else
+        {
+            meshRenderer.material.SetTexture("_MainTex", onNight);
+        }
+
+        yield return new WaitForSecondsRealtime(refreshTimeCheckingInterval);
+
+        CoroutinesHandler.Get().RunCoroutineWithCheck(ref checkTimeCoroutine, CheckHour());
+    }
 }
