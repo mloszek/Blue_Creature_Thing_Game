@@ -17,7 +17,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 	public IngameMenuScript ingameMenuScript;
 	public float volume; 
 
-	public void begin ()
+	public void OnStartPress ()
 	{
 		volume = 0.65f;
 		GameObject.FindWithTag ("Player").GetComponent<TesText> ().setVolume (volume);
@@ -44,25 +44,25 @@ public class MainMenuButtonsScript : MonoBehaviour
 		toggleButton.SetActive (true);
 	}
 
-	public void options ()
+	public void OnOptionsPressed ()
 	{
 		source.Play ();
 		optionBoard.SetActive (true);
 	}
 
-	public void quit ()
+	public void OnQuitPress ()
 	{
 		source.Play ();
 		Application.Quit ();
 	}
 
-	public void closeOptionWindow ()
+	public void OnCloseOptionPanel ()
 	{
 		source.Play ();
 		optionBoard.SetActive (false);
 	}
 
-	public void changeVolume(float newValue)
+	public void ChangeVolume(float newValue)
 	{
 		source.volume = newValue;
 		GameObject.FindWithTag ("Player").GetComponent<TesText> ().setVolume (newValue);
